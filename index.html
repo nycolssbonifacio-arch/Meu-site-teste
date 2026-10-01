@@ -1,0 +1,1846 @@
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRAZA — Burger Artesanal | O Smash Que Vicia</title>
+<meta name="description" content="BRAZA Burger Artesanal — Blend 100% Angus, pão brioche selado na manteiga, cheddar inglês em cascata. Terça a Domingo, 18h às 23h. Peça agora!">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        coal: '#0A0A0B',
+        smoke: '#131315',
+        card: '#17171A',
+        line: '#26262B',
+        braza: '#FF1E2D',
+        brazaDark: '#B80F1C',
+        ember: '#FF5A1F',
+        cheddar: '#FFC425',
+        cheddarDark: '#E19E00',
+        cream: '#FFF6E9',
+        muted: '#A1A1AA'
+      },
+      fontFamily: {
+        display: ['Anton', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        script: ['Caveat', 'cursive']
+      },
+      boxShadow: {
+        glowRed: '0 0 40px rgba(255,30,45,.35)',
+        glowYellow: '0 0 40px rgba(255,196,37,.25)',
+        card: '0 20px 60px rgba(0,0,0,.6)'
+      }
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior:smooth; }
+  body{ background:#0A0A0B; color:#FFF6E9; font-family:'Plus Jakarta Sans',sans-serif; overflow-x:hidden; }
+  ::selection{ background:#FF1E2D; color:#fff; }
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:#0A0A0B; }
+  ::-webkit-scrollbar-thumb{ background:linear-gradient(#FF1E2D,#FFC425); border-radius:99px; }
+
+  .font-display{ font-family:'Anton',sans-serif; letter-spacing:.01em; }
+  .font-script{ font-family:'Caveat',cursive; }
+
+  .grain::after{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:5; opacity:.06;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-stroke{ -webkit-text-stroke:1.5px rgba(255,255,255,.22); color:transparent; }
+  .text-stroke-red{ -webkit-text-stroke:1.5px #FF1E2D; color:transparent; }
+
+  .hero-grid{
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 40%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 40%, transparent 75%);
+  }
+
+  .marquee-track{ display:flex; width:max-content; animation:marquee 26s linear infinite; }
+  @keyframes marquee{ to{ transform:translateX(-50%); } }
+
+  @keyframes floaty{ 0%,100%{ transform:translateY(0) rotate(-1.5deg);} 50%{ transform:translateY(-16px) rotate(1.5deg);} }
+  @keyframes spinSlow{ to{ transform:rotate(360deg); } }
+  @keyframes pulseGlow{ 0%,100%{ box-shadow:0 0 0 0 rgba(255,30,45,.6);} 50%{ box-shadow:0 0 0 18px rgba(255,30,45,0);} }
+  @keyframes flameFlicker{ 0%,100%{ transform:scale(1) rotate(-2deg);} 50%{ transform:scale(1.09) rotate(2deg);} }
+  @keyframes wiggle{ 0%,100%{ transform:rotate(-3deg);} 50%{ transform:rotate(3deg);} }
+
+  .floaty{ animation:floaty 6s ease-in-out infinite; }
+  .spin-slow{ animation:spinSlow 20s linear infinite; }
+  .wiggle:hover{ animation:wiggle .45s ease-in-out; }
+
+  .burger-shadow{ filter:drop-shadow(0 40px 60px rgba(0,0,0,.85)) drop-shadow(0 0 80px rgba(255,30,45,.22)); }
+
+  .card-tilt{ transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s, border-color .3s; }
+  .card-tilt:hover{
+    transform:translateY(-10px);
+    border-color:rgba(255,30,45,.5)!important;
+    box-shadow:0 30px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(255,30,45,.3), 0 10px 40px rgba(255,30,45,.15);
+  }
+
+  .btn-fire{
+    background:linear-gradient(135deg,#FF1E2D 0%,#FF5A1F 55%,#FFC425 130%);
+    position:relative; overflow:hidden; transition:.3s; color:#fff;
+  }
+  .btn-fire::before{
+    content:''; position:absolute; top:0; left:-80%; width:60%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+    transform:skewX(-20deg); transition:.6s;
+  }
+  .btn-fire:hover::before{ left:130%; }
+  .btn-fire:hover{ transform:translateY(-2px); box-shadow:0 15px 40px rgba(255,30,45,.5); }
+
+  .btn-cheddar{ background:#FFC425; color:#0A0A0B; transition:.3s; }
+  .btn-cheddar:hover{ background:#fff; transform:translateY(-2px); box-shadow:0 15px 40px rgba(255,196,37,.35); }
+
+  .btn-whats{ background:#1FA855; transition:.3s; }
+  .btn-whats:hover{ background:#25D366; color:#0A0A0B; transform:translateY(-2px); box-shadow:0 12px 35px rgba(37,211,102,.35); }
+
+  .chip-active{ background:#FF1E2D!important; color:#fff!important; border-color:#FF1E2D!important; box-shadow:0 8px 25px rgba(255,30,45,.4); }
+
+  .reveal{ opacity:0; transform:translateY(42px); }
+  .dashed-line{ background-image:linear-gradient(90deg,#333 50%,transparent 50%); background-size:12px 1px; background-repeat:repeat-x; height:1px; }
+
+  #embers{ position:absolute; inset:0; pointer-events:none; }
+
+  input, textarea, select{ outline:none; }
+  input:focus, textarea:focus, select:focus{ border-color:#FF1E2D!important; box-shadow:0 0 0 3px rgba(255,30,45,.15); }
+
+  .no-scrollbar::-webkit-scrollbar{ display:none; }
+  .no-scrollbar{ scrollbar-width:none; }
+
+  .toast-in{ animation:toastIn .45s cubic-bezier(.2,.9,.3,1.2) forwards; }
+  @keyframes toastIn{ from{ transform:translateX(120%) scale(.9); opacity:0;} to{ transform:translateX(0) scale(1); opacity:1;} }
+
+  .modal-open{ overflow:hidden; }
+
+  .star{ color:#FFC425; }
+  .review-track{ transition:transform .6s cubic-bezier(.2,.8,.2,1); }
+
+  #preloader{ transition:opacity .6s, visibility .6s; }
+  .loader-flame{ animation:flameFlicker 1s ease-in-out infinite; filter:drop-shadow(0 0 20px #FF1E2D); }
+
+  .line-clamp-3{ display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+</style>
+</head>
+<body class="grain antialiased">
+
+<!-- ===================== PRELOADER ===================== -->
+<div id="preloader" class="fixed inset-0 z-[200] bg-coal flex flex-col items-center justify-center gap-6">
+  <div class="loader-flame text-7xl">🔥</div>
+  <div class="font-display text-4xl tracking-wide">BRAZA<span class="text-braza">.</span></div>
+  <div class="text-xs tracking-[.35em] text-muted uppercase">Acendendo a chapa...</div>
+  <div class="w-56 h-1 bg-line rounded-full overflow-hidden">
+    <div id="loadBar" class="h-full w-0 bg-gradient-to-r from-braza to-cheddar"></div>
+  </div>
+</div>
+
+<!-- ===================== TOP PROMO BAR ===================== -->
+<div class="fixed top-0 left-0 right-0 z-[90] bg-gradient-to-r from-brazaDark via-braza to-ember text-white text-[12.5px] font-bold">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-3 text-center">
+    <i class="fa-solid fa-motorcycle"></i>
+    <span class="tracking-wide">
+      FRETE GRÁTIS acima de R$ 60 • Cupom
+      <button onclick="applyCouponCode('BRAZA10')" class="underline underline-offset-2 decoration-dashed hover:text-cheddar">BRAZA10</button>
+      = 10% OFF
+    </span>
+    <span id="openBadge" class="hidden sm:inline-flex items-center gap-1.5 bg-black/30 px-3 py-0.5 rounded-full text-[11px]">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+      <span id="openBadgeText">Aberto agora</span>
+    </span>
+  </div>
+</div>
+
+<!-- ===================== HEADER ===================== -->
+<header id="header" class="fixed top-[36px] left-0 right-0 z-[80] transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4">
+    <div id="navBox" class="flex items-center justify-between gap-4 bg-smoke/70 backdrop-blur-xl border border-white/10 rounded-2xl px-4 sm:px-6 py-3 shadow-card transition-all">
+      <!-- Logo -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-braza to-ember flex items-center justify-center text-2xl shadow-glowRed group-hover:rotate-12 transition-transform">🔥</div>
+        <div class="leading-none">
+          <div class="font-display text-2xl tracking-wide">BRAZA<span class="text-braza">.</span></div>
+          <div class="text-[10px] tracking-[.3em] text-cheddar font-bold uppercase">Burger Artesanal</div>
+        </div>
+      </a>
+
+      <!-- Nav -->
+      <nav class="hidden lg:flex items-center gap-1 text-[14px] font-semibold text-white/80">
+        <a href="#inicio" class="px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Início</a>
+        <a href="#mais-vendidos" class="px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Mais Vendidos</a>
+        <a href="#cardapio" class="px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Cardápio</a>
+        <a href="#sobre" class="px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Sobre</a>
+        <a href="#avaliacoes" class="px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Avaliações</a>
+        <a href="#contato" class="px-4 py-2 rounded-full hover:bg-white/10 hover:text-white transition">Contato</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2.5">
+        <button onclick="toggleCart(true)" class="relative w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-braza/50 transition group" aria-label="Abrir carrinho">
+          <i class="fa-solid fa-basket-shopping text-lg group-hover:text-cheddar transition"></i>
+          <span id="cartCount" class="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] px-1 rounded-full bg-braza text-white text-[11px] font-extrabold flex items-center justify-center shadow-glowRed scale-0 transition-transform">0</span>
+        </button>
+        <a href="#cardapio" class="hidden sm:inline-flex btn-fire items-center gap-2 font-extrabold text-sm px-6 py-3 rounded-xl">
+          <i class="fa-solid fa-fire"></i> Pedir Agora
+        </a>
+        <button id="mobileBtn" class="lg:hidden w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center" aria-label="Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="lg:hidden hidden mt-2 bg-smoke/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 space-y-1 font-semibold">
+      <a href="#inicio" class="block px-4 py-3 rounded-xl hover:bg-white/5">Início</a>
+      <a href="#mais-vendidos" class="block px-4 py-3 rounded-xl hover:bg-white/5">Mais Vendidos</a>
+      <a href="#cardapio" class="block px-4 py-3 rounded-xl hover:bg-white/5">Cardápio</a>
+      <a href="#sobre" class="block px-4 py-3 rounded-xl hover:bg-white/5">Sobre</a>
+      <a href="#avaliacoes" class="block px-4 py-3 rounded-xl hover:bg-white/5">Avaliações</a>
+      <a href="#contato" class="block px-4 py-3 rounded-xl hover:bg-white/5">Contato</a>
+      <a href="#cardapio" class="block text-center btn-fire px-4 py-3 rounded-xl font-extrabold mt-2">🔥 Pedir Agora</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section id="inicio" class="relative min-h-screen pt-[150px] pb-10 overflow-hidden">
+  <div class="absolute inset-0 hero-grid"></div>
+  <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-braza/20 blur-[140px] rounded-full pointer-events-none"></div>
+  <div class="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-ember/10 blur-[120px] rounded-full pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-[500px] h-[400px] bg-cheddar/10 blur-[120px] rounded-full pointer-events-none"></div>
+  <canvas id="embers"></canvas>
+
+  <div class="relative max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+    <!-- LEFT -->
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full pl-1.5 pr-4 py-1.5 text-[13px] font-semibold mb-6">
+        <span class="bg-cheddar text-black text-[11px] font-extrabold px-2.5 py-1 rounded-full flex items-center gap-1">
+          <i class="fa-solid fa-star text-[10px]"></i> 4.9
+        </span>
+        <span class="text-white/80">+12.400 avaliações • A hamburgueria mais amada da cidade</span>
+      </div>
+
+      <p class="font-script text-cheddar text-2xl sm:text-3xl -rotate-2 mb-2">feito na chapa, servido com atitude...</p>
+
+      <h1 class="font-display text-[13vw] sm:text-6xl xl:text-[76px] leading-[.95] uppercase">
+        O smash que <br>você <span class="text-transparent bg-clip-text bg-gradient-to-r from-braza via-ember to-cheddar">ouve chiar.</span><br>
+        O sabor que <span class="text-stroke">nunca</span> esquece.
+      </h1>
+
+      <p class="mt-6 text-white/70 text-[16px] sm:text-lg leading-relaxed max-w-xl">
+        Blend <strong class="text-white">100% Angus 180g</strong> prensado a 300°C,
+        <strong class="text-cheddar">cheddar inglês em cascata</strong>, pão brioche selado na manteiga
+        e molhos feitos <strong class="text-white">todo santo dia</strong>.
+        Isso não é lanche. É <strong class="text-braza">BRAZA</strong>.
+      </p>
+
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a href="#cardapio" class="btn-fire inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-extrabold text-[15px]">
+          <i class="fa-solid fa-utensils"></i> Ver Cardápio Completo <i class="fa-solid fa-arrow-right text-sm"></i>
+        </a>
+        <a href="https://wa.me/5511999990000?text=Ol%C3%A1%20BRAZA!%20Quero%20fazer%20um%20pedido%20%E2%9C%A8" target="_blank" rel="noopener" class="btn-whats inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-extrabold text-[15px] text-white">
+          <i class="fa-brands fa-whatsapp text-xl"></i> Pedir no WhatsApp
+        </a>
+      </div>
+
+      <div class="flex items-center gap-6 mt-8 text-[13px] text-white/60 font-semibold flex-wrap">
+        <div class="flex items-center gap-2">
+          <span class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-cheddar"><i class="fa-solid fa-motorcycle"></i></span>
+          <span>Entrega em<br><strong class="text-white">25–35 min</strong></span>
+        </div>
+        <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
+        <div class="flex items-center gap-2">
+          <span class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-braza"><i class="fa-solid fa-drumstick-bite"></i></span>
+          <span>100% Angus<br><strong class="text-white">Blend exclusivo</strong></span>
+        </div>
+        <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
+        <div class="hidden sm:flex items-center gap-2">
+          <span class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-green-400"><i class="fa-solid fa-leaf"></i></span>
+          <span>Pão fresco<br><strong class="text-white">todo dia</strong></span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 mt-6">
+        <div class="flex -space-x-3">
+          <img src="https://i.pravatar.cc/80?img=12" class="w-10 h-10 rounded-full border-2 border-coal object-cover" alt="Cliente BRAZA">
+          <img src="https://i.pravatar.cc/80?img=32" class="w-10 h-10 rounded-full border-2 border-coal object-cover" alt="Cliente BRAZA">
+          <img src="https://i.pravatar.cc/80?img=47" class="w-10 h-10 rounded-full border-2 border-coal object-cover" alt="Cliente BRAZA">
+          <img src="https://i.pravatar.cc/80?img=56" class="w-10 h-10 rounded-full border-2 border-coal object-cover" alt="Cliente BRAZA">
+          <div class="w-10 h-10 rounded-full border-2 border-coal bg-braza flex items-center justify-center text-[11px] font-extrabold">+12k</div>
+        </div>
+        <div class="text-[13px] text-white/60">
+          <div class="flex gap-0.5 star text-sm mb-0.5">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <strong class="text-white">“Melhor smash da cidade, sem discussão.”</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="relative flex justify-center lg:justify-end reveal">
+      <div class="relative w-full max-w-[540px]">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-[420px] h-[420px] rounded-full border border-dashed border-white/15 spin-slow"></div>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-[340px] h-[340px] rounded-full bg-gradient-to-br from-braza/40 to-cheddar/20 blur-2xl"></div>
+        </div>
+
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" alt="Burger BRAZA Brutal Cheddar" class="floaty relative z-10 w-full aspect-square object-cover rounded-[2.5rem] burger-shadow border border-white/10">
+
+        <!-- rotating badge -->
+        <div class="absolute -top-4 -left-4 z-20 w-28 h-28">
+          <div class="absolute inset-0 spin-slow">
+            <svg viewBox="0 0 100 100" class="w-full h-full">
+              <defs><path id="circ" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"></path></defs>
+              <text class="fill-cheddar" style="font-size:11.5px;font-weight:800;letter-spacing:2px">
+                <textPath href="#circ">100% ARTESANAL • DESDE 2018 • </textPath>
+              </text>
+            </svg>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-12 h-12 rounded-full bg-braza flex items-center justify-center text-2xl shadow-glowRed">🔥</div>
+          </div>
+        </div>
+
+        <!-- price tag -->
+        <div class="absolute top-8 -right-2 sm:right-4 z-20 bg-cheddar text-black rounded-2xl px-4 py-3 rotate-6 shadow-glowYellow wiggle cursor-pointer" onclick="openProduct('brutal')">
+          <div class="text-[11px] font-extrabold uppercase tracking-wider opacity-70 line-through">R$ 39,90</div>
+          <div class="font-display text-2xl leading-none">R$ 32,90</div>
+          <div class="text-[11px] font-bold">Nº1 MAIS PEDIDO 👆</div>
+        </div>
+
+        <!-- floating cards -->
+        <div class="absolute -bottom-4 -left-2 sm:left-2 z-20 bg-smoke/90 backdrop-blur border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-card floaty" style="animation-delay:1.2s">
+          <div class="w-10 h-10 rounded-xl bg-green-500/15 text-green-400 flex items-center justify-center"><i class="fa-solid fa-fire-burner"></i></div>
+          <div class="text-[12px] leading-tight"><strong>Chapa a 300°C</strong><br><span class="text-white/60">Crosta caramelizada perfeita</span></div>
+        </div>
+
+        <div class="absolute bottom-24 -right-2 sm:right-0 z-20 bg-smoke/90 backdrop-blur border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-card floaty" style="animation-delay:2.4s">
+          <div class="w-10 h-10 rounded-xl bg-cheddar/15 text-cheddar flex items-center justify-center"><i class="fa-solid fa-cheese"></i></div>
+          <div class="text-[12px] leading-tight"><strong>Cheddar em cascata</strong><br><span class="text-white/60">Derretido na hora</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="relative mt-14 border-y border-white/10 bg-smoke/60 backdrop-blur overflow-hidden py-3.5 -rotate-1 scale-[1.02]">
+    <div class="marquee-track font-display text-lg tracking-wider uppercase text-white/90">
+      <div class="flex items-center gap-8 pr-8" id="marqueeA"></div>
+      <div class="flex items-center gap-8 pr-8" id="marqueeB"></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="relative max-w-7xl mx-auto px-4 mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3">
+    <div class="bg-card border border-white/10 rounded-2xl p-5 text-center reveal">
+      <div class="font-display text-3xl text-cheddar"><span class="counter" data-target="180">0</span>g</div>
+      <div class="text-[12px] font-bold uppercase tracking-widest text-white/50 mt-1">Blend Angus por burger</div>
+    </div>
+    <div class="bg-card border border-white/10 rounded-2xl p-5 text-center reveal">
+      <div class="font-display text-3xl text-braza"><span class="counter" data-target="35">0</span>min</div>
+      <div class="text-[12px] font-bold uppercase tracking-widest text-white/50 mt-1">Entrega média</div>
+    </div>
+    <div class="bg-card border border-white/10 rounded-2xl p-5 text-center reveal">
+      <div class="font-display text-3xl"><span class="counter" data-target="98">0</span>%</div>
+      <div class="text-[12px] font-bold uppercase tracking-widest text-white/50 mt-1">Recomendam a Braza</div>
+    </div>
+    <div class="bg-card border border-white/10 rounded-2xl p-5 text-center reveal">
+      <div class="font-display text-3xl text-green-400">+<span class="counter" data-target="120">0</span>k</div>
+      <div class="text-[12px] font-bold uppercase tracking-widest text-white/50 mt-1">Burgers entregues</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MAIS VENDIDOS ===================== -->
+<section id="mais-vendidos" class="relative py-20">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 reveal">
+      <div>
+        <div class="inline-flex items-center gap-2 text-braza font-extrabold text-[12px] tracking-[.3em] uppercase mb-3">
+          <span class="w-8 h-[2px] bg-braza"></span> Best-sellers da casa
+        </div>
+        <h2 class="font-display text-4xl sm:text-6xl uppercase leading-[.95]">
+          Os mais <span class="text-transparent bg-clip-text bg-gradient-to-r from-braza to-cheddar">vendidos</span><br>
+          <span class="text-stroke">vão te deixar maluco</span>
+        </h2>
+        <p class="text-white/60 mt-4 max-w-xl">
+          Os três que nunca saem da chapa. Receita testada mais de 400 vezes até atingir a suculência perfeita.
+          <strong class="text-white">Se é sua primeira vez, comece por aqui.</strong>
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="scrollToMenu()" class="btn-cheddar font-extrabold text-sm px-6 py-3.5 rounded-xl">
+          Ver cardápio completo <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="bestSellers" class="grid md:grid-cols-3 gap-5"></div>
+
+    <!-- COMO FUNCIONA -->
+    <div class="mt-12 grid sm:grid-cols-3 gap-3 reveal">
+      <div class="flex items-center gap-4 bg-white/[.03] border border-white/10 rounded-2xl p-5">
+        <div class="w-12 h-12 shrink-0 rounded-xl bg-braza/15 text-braza font-display text-xl flex items-center justify-center">01</div>
+        <div class="text-sm"><strong>Escolha seu monstro</strong><br><span class="text-white/55">Cardápio enxuto, só pedrada. Sem enrolação.</span></div>
+      </div>
+      <div class="flex items-center gap-4 bg-white/[.03] border border-white/10 rounded-2xl p-5">
+        <div class="w-12 h-12 shrink-0 rounded-xl bg-cheddar/15 text-cheddar font-display text-xl flex items-center justify-center">02</div>
+        <div class="text-sm"><strong>Turbine do seu jeito</strong><br><span class="text-white/55">Ponto da carne, extras, molho dobrado.</span></div>
+      </div>
+      <div class="flex items-center gap-4 bg-white/[.03] border border-white/10 rounded-2xl p-5">
+        <div class="w-12 h-12 shrink-0 rounded-xl bg-green-500/15 text-green-400 font-display text-xl flex items-center justify-center">03</div>
+        <div class="text-sm"><strong>Receba quentinho</strong><br><span class="text-white/55">Embalagem térmica que segura a crocância.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CARDÁPIO COMPLETO ===================== -->
+<section id="cardapio" class="relative py-20 bg-smoke/40 border-y border-white/5">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+      <div class="inline-flex items-center gap-2 bg-braza/10 border border-braza/30 text-braza font-extrabold text-[12px] tracking-[.25em] uppercase px-4 py-2 rounded-full mb-4">
+        <i class="fa-solid fa-book-open"></i> Cardápio completo
+      </div>
+      <h2 class="font-display text-4xl sm:text-6xl uppercase">
+        Escolhe sem medo.<br><span class="text-cheddar">Tudo aqui é absurdo.</span>
+      </h2>
+      <p class="text-white/60 mt-4">
+        Filtre por categoria, busque pelo desejo e monte seu pedido. Tudo sai da chapa na hora —
+        <strong class="text-white">nada congelado, nada pronto.</strong>
+      </p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-3 items-stretch lg:items-center justify-between mb-8 reveal">
+      <div class="relative flex-1 max-w-md">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-white/40"></i>
+        <input id="searchInput" oninput="renderMenu()" placeholder="Buscar desejo... ex: bacon, trufado, veggie" class="w-full bg-card border border-white/10 rounded-xl pl-11 pr-4 py-3.5 text-sm placeholder:text-white/30 transition">
+      </div>
+      <div id="categoryTabs" class="flex gap-2 overflow-x-auto no-scrollbar pb-1"></div>
+    </div>
+
+    <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+
+    <div id="menuEmpty" class="hidden text-center py-16 text-white/50">
+      <div class="text-5xl mb-4">🍔</div>
+      <p class="font-bold text-white">Nada por aqui com esse nome...</p>
+      <p class="text-sm">Tenta "smash", "bacon" ou "cheddar"</p>
+      <button onclick="clearSearch()" class="mt-4 text-braza font-bold underline">Limpar busca</button>
+    </div>
+
+    <!-- MONTE SEU BURGER -->
+    <div class="mt-14 relative overflow-hidden rounded-[2rem] border border-cheddar/25 bg-gradient-to-br from-card via-[#1E1505] to-card p-8 sm:p-12 reveal">
+      <div class="absolute -right-20 -top-20 w-80 h-80 bg-cheddar/15 blur-[80px] rounded-full"></div>
+      <div class="grid lg:grid-cols-2 gap-10 items-center relative">
+        <div>
+          <div class="font-script text-cheddar text-3xl -rotate-2">laboratório da gula</div>
+          <h3 class="font-display text-4xl sm:text-5xl uppercase mt-1">Monte seu <span class="text-cheddar">burger dos sonhos</span></h3>
+          <p class="text-white/60 mt-3 text-[15px]">
+            Escolha pão, carne, queijo e finalize com nossos molhos autorais. O preço atualiza na hora e vai direto pro carrinho.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-3 mt-6 text-sm">
+            <label class="block">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-white/50">Pão</span>
+              <select id="bPao" onchange="calcBuilder()" class="mt-1.5 w-full bg-coal border border-white/10 rounded-xl px-3 py-3 font-semibold">
+                <option value="Brioche selado na manteiga|0">Brioche na manteiga</option>
+                <option value="Australiano|2">Australiano (+R$2)</option>
+                <option value="Batata|0">Batata macio</option>
+                <option value="Sem glúten|4">Sem glúten (+R$4)</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-white/50">Carne</span>
+              <select id="bCarne" onchange="calcBuilder()" class="mt-1.5 w-full bg-coal border border-white/10 rounded-xl px-3 py-3 font-semibold">
+                <option value="Smash 90g|0">Smash 90g</option>
+                <option value="Smash duplo 180g|9">Smash duplo (+R$9)</option>
+                <option value="Blend Angus 180g|12">Angus 180g (+R$12)</option>
+                <option value="Blend Angus duplo 360g|24">Angus duplo (+R$24)</option>
+                <option value="Falafel veggie|5">Falafel veggie (+R$5)</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-white/50">Queijo</span>
+              <select id="bQueijo" onchange="calcBuilder()" class="mt-1.5 w-full bg-coal border border-white/10 rounded-xl px-3 py-3 font-semibold">
+                <option value="Cheddar inglês|0">Cheddar inglês</option>
+                <option value="Prato|0">Prato</option>
+                <option value="Brie grelhado|6">Brie (+R$6)</option>
+                <option value="Provolone defumado|5">Provolone defumado (+R$5)</option>
+                <option value="Sem queijo|0">Sem queijo</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-white/50">Molho autoral</span>
+              <select id="bMolho" onchange="calcBuilder()" class="mt-1.5 w-full bg-coal border border-white/10 rounded-xl px-3 py-3 font-semibold">
+                <option value="Braza defumado|0">Braza defumado</option>
+                <option value="Maionese de alho|0">Maionese de alho</option>
+                <option value="Barbecue de goiabada|3">BBQ goiabada (+R$3)</option>
+                <option value="Trufa + parmesão|6">Trufa (+R$6)</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="mt-4">
+            <div class="text-[11px] font-extrabold uppercase tracking-widest text-white/50 mb-2">Extras que viciam</div>
+            <div class="flex flex-wrap gap-2" id="builderExtras">
+              <button data-name="Bacon caramelizado" data-price="7" class="extraBtn px-3.5 py-2 rounded-full border border-white/15 text-[13px] font-bold hover:border-cheddar transition">🥓 Bacon +R$7</button>
+              <button data-name="Cebola crispy" data-price="4" class="extraBtn px-3.5 py-2 rounded-full border border-white/15 text-[13px] font-bold hover:border-cheddar transition">🧅 Crispy +R$4</button>
+              <button data-name="Cheddar extra" data-price="6" class="extraBtn px-3.5 py-2 rounded-full border border-white/15 text-[13px] font-bold hover:border-cheddar transition">🧀 Cheddar +R$6</button>
+              <button data-name="Ovo caipira" data-price="5" class="extraBtn px-3.5 py-2 rounded-full border border-white/15 text-[13px] font-bold hover:border-cheddar transition">🍳 Ovo +R$5</button>
+              <button data-name="Picles artesanal" data-price="3" class="extraBtn px-3.5 py-2 rounded-full border border-white/15 text-[13px] font-bold hover:border-cheddar transition">🥒 Picles +R$3</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-coal/80 border border-white/10 rounded-3xl p-7 text-center">
+          <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=800&auto=format&fit=crop" class="w-full h-56 object-cover rounded-2xl mb-5" alt="Monte seu burger">
+          <div class="text-[12px] uppercase tracking-[.25em] text-white/50 font-extrabold">Sua criação</div>
+          <div id="builderDesc" class="font-bold mt-1 text-[15px] min-h-[44px]">Smash 90g + Cheddar inglês + Braza defumado no Brioche selado na manteiga</div>
+          <div class="dashed-line my-4 opacity-40"></div>
+          <div class="flex items-center justify-center gap-4">
+            <div class="font-display text-4xl text-cheddar" id="builderPrice">R$ 24,90</div>
+          </div>
+          <button onclick="addBuilderToCart()" class="btn-fire w-full mt-5 py-4 rounded-2xl font-extrabold flex items-center justify-center gap-2">
+            <i class="fa-solid fa-plus"></i> Adicionar minha criação
+          </button>
+          <p class="text-[12px] text-white/40 mt-3">Base R$24,90 + adicionais selecionados</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE / HISTÓRIA ===================== -->
+<section id="sobre" class="relative py-24 overflow-hidden">
+  <div class="absolute top-20 right-0 font-display text-[18vw] leading-none text-white/[.025] uppercase pointer-events-none select-none">BRAZA</div>
+  <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="relative reveal">
+      <div class="grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=700&auto=format&fit=crop" class="rounded-3xl h-72 w-full object-cover border border-white/10" alt="Chapa quente">
+        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=700&auto=format&fit=crop" class="rounded-3xl h-72 w-full object-cover border border-white/10 mt-8" alt="Burger artesanal">
+        <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=700&auto=format&fit=crop" class="rounded-3xl h-60 w-full object-cover border border-white/10 -mt-8" alt="Ingredientes frescos">
+        <div class="rounded-3xl h-60 bg-gradient-to-br from-braza to-ember p-6 flex flex-col justify-between border border-white/10">
+          <i class="fa-solid fa-fire text-3xl"></i>
+          <div>
+            <div class="font-display text-4xl">DESDE<br>2018</div>
+            <div class="text-sm font-semibold opacity-80 mt-1">8 anos de chapa quente e fila na porta.</div>
+          </div>
+        </div>
+      </div>
+      <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-cheddar text-black font-extrabold text-sm px-6 py-3 rounded-full shadow-glowYellow whitespace-nowrap rotate-[-2deg]">
+        🔥 +120 mil burgers esmagados
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 text-cheddar font-extrabold text-[12px] tracking-[.3em] uppercase mb-3">
+        <span class="w-8 h-[2px] bg-cheddar"></span> Nossa história
+      </div>
+      <h2 class="font-display text-4xl sm:text-6xl uppercase leading-[.95]">
+        Nascemos numa garagem. <span class="text-braza">Viramos obsessão.</span>
+      </h2>
+      <p class="text-white/65 mt-6 leading-relaxed">
+        Tudo começou em 2018, com uma chapa usada, um moedor de carne e uma certeza:
+        <strong class="text-white">São Paulo merecia um smash de verdade.</strong>
+        A gente mói o blend todo dia, assa o pão com parceiro local às 16h e defuma a maionese no pit que fica aceso até meia-noite.
+      </p>
+      <p class="text-white/65 mt-4 leading-relaxed">
+        Nada de congelado. Nada de atalho. Carne selecionada de frigorífico certificado, bacon curado por 7 dias e aquele
+        <em class="text-cheddar not-italic font-bold">tssss</em> da carne prensada que você ouve da calçada.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-3 mt-8">
+        <div class="bg-card border border-white/10 rounded-2xl p-5 flex gap-4 hover:border-green-500/40 transition">
+          <div class="w-12 h-12 shrink-0 rounded-xl bg-green-500/15 text-green-400 flex items-center justify-center text-xl"><i class="fa-solid fa-leaf"></i></div>
+          <div><strong>Ingredientes frescos</strong><p class="text-[13px] text-white/55 mt-1">Hortifruti todo dia de manhã. Pão assado à tarde. Zero estoque velho.</p></div>
+        </div>
+        <div class="bg-card border border-white/10 rounded-2xl p-5 flex gap-4 hover:border-braza/50 transition">
+          <div class="w-12 h-12 shrink-0 rounded-xl bg-braza/15 text-braza flex items-center justify-center text-xl"><i class="fa-solid fa-drumstick-bite"></i></div>
+          <div><strong>Carne selecionada</strong><p class="text-[13px] text-white/55 mt-1">Blend 100% Angus, moagem diária, gordura na medida da suculência.</p></div>
+        </div>
+        <div class="bg-card border border-white/10 rounded-2xl p-5 flex gap-4 hover:border-cheddar/50 transition">
+          <div class="w-12 h-12 shrink-0 rounded-xl bg-cheddar/15 text-cheddar flex items-center justify-center text-xl"><i class="fa-solid fa-motorcycle"></i></div>
+          <div><strong>Entrega rápida</strong><p class="text-[13px] text-white/55 mt-1">Rota inteligente + embalagem térmica. Média de 32 min quentinho.</p></div>
+        </div>
+        <div class="bg-card border border-white/10 rounded-2xl p-5 flex gap-4 hover:border-ember/50 transition">
+          <div class="w-12 h-12 shrink-0 rounded-xl bg-ember/15 text-ember flex items-center justify-center text-xl"><i class="fa-solid fa-jar"></i></div>
+          <div><strong>Molhos artesanais</strong><p class="text-[13px] text-white/55 mt-1">7 receitas autorais defumadas na casa. O Braza é segredo trancado.</p></div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-8">
+        <a href="#cardapio" class="btn-fire px-7 py-3.5 rounded-xl font-extrabold text-sm">Provar essa história</a>
+        <a href="#avaliacoes" class="px-7 py-3.5 rounded-xl font-extrabold text-sm border border-white/15 hover:bg-white/5 transition">O que dizem da gente</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESSO -->
+  <div class="max-w-7xl mx-auto px-4 mt-16">
+    <div class="bg-gradient-to-r from-brazaDark/30 via-card to-card border border-white/10 rounded-[2rem] p-8 sm:p-10 grid md:grid-cols-4 gap-6 reveal">
+      <div class="md:col-span-4 flex items-center justify-between flex-wrap gap-2">
+        <h3 class="font-display text-3xl uppercase">Do moedor à sua boca <span class="text-cheddar">em 4 rituais</span></h3>
+        <span class="text-[12px] font-bold tracking-widest uppercase text-white/40">Processo Braza®</span>
+      </div>
+      <div class="flex gap-4"><div class="font-display text-4xl text-braza/60">01</div><div class="text-sm"><strong>Moagem do dia</strong><br><span class="text-white/55">Blend Angus moído às 17h. Nunca congelamos.</span></div></div>
+      <div class="flex gap-4"><div class="font-display text-4xl text-braza/60">02</div><div class="text-sm"><strong>Smash a 300°C</strong><br><span class="text-white/55">Prensa de 10s. Crosta caramelizada, centro rosado.</span></div></div>
+      <div class="flex gap-4"><div class="font-display text-4xl text-braza/60">03</div><div class="text-sm"><strong>Pão na manteiga</strong><br><span class="text-white/55">Brioche selado até dourar. Não encharca, não esfarela.</span></div></div>
+      <div class="flex gap-4"><div class="font-display text-4xl text-braza/60">04</div><div class="text-sm"><strong>Defumação final</strong><br><span class="text-white/55">Toque de fumaça de macieira no molho e no queijo.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AVALIAÇÕES ===================== -->
+<section id="avaliacoes" class="relative py-20 bg-smoke/40 border-y border-white/5 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+      <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[13px] font-bold mb-4">
+        <span class="flex gap-0.5 star"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+        4.9 no Google • 4.8 no iFood
+      </div>
+      <h2 class="font-display text-4xl sm:text-6xl uppercase">Quem provou, <span class="text-transparent bg-clip-text bg-gradient-to-r from-cheddar to-ember">se rendeu.</span></h2>
+      <p class="text-white/60 mt-3">Social proof de verdade: printamos sem filtro. Ponto da carne, entrega e aquele molho que o povo tenta adivinhar.</p>
+    </div>
+
+    <div class="relative reveal">
+      <div class="overflow-hidden rounded-[1.5rem]">
+        <div id="reviewTrack" class="review-track flex"></div>
+      </div>
+      <div class="flex items-center justify-center gap-3 mt-6">
+        <button onclick="moveReview(-1)" class="w-11 h-11 rounded-full border border-white/15 hover:bg-braza hover:border-braza transition flex items-center justify-center" aria-label="Anterior"><i class="fa-solid fa-arrow-left"></i></button>
+        <div id="reviewDots" class="flex gap-2"></div>
+        <button onclick="moveReview(1)" class="w-11 h-11 rounded-full border border-white/15 hover:bg-braza hover:border-braza transition flex items-center justify-center" aria-label="Próximo"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+
+    <div class="mt-10 max-w-3xl mx-auto bg-card border border-white/10 rounded-3xl p-6 sm:p-8 reveal">
+      <h3 class="font-display text-2xl uppercase">Comeu e amou? <span class="text-cheddar">Conta pra gente</span></h3>
+      <p class="text-sm text-white/55 mt-1">Sua avaliação entra ao vivo no carrossel. Sem cadastro, sem enrolação.</p>
+      <div class="grid sm:grid-cols-2 gap-3 mt-5">
+        <input id="revName" placeholder="Seu nome (ex: Camila R.)" class="bg-coal border border-white/10 rounded-xl px-4 py-3 text-sm">
+        <div class="flex items-center gap-1 bg-coal border border-white/10 rounded-xl px-4 py-3">
+          <span class="text-sm text-white/50 mr-2 font-bold">Sua nota:</span>
+          <div id="revStars" class="flex gap-1 text-xl cursor-pointer"></div>
+        </div>
+      </div>
+      <textarea id="revText" rows="2" placeholder="Ex: Ponto da carne perfeito, chegou em 25min ainda chiando..." class="mt-3 w-full bg-coal border border-white/10 rounded-xl px-4 py-3 text-sm"></textarea>
+      <button onclick="submitReview()" class="btn-cheddar mt-3 px-6 py-3 rounded-xl font-extrabold text-sm w-full sm:w-auto">
+        Publicar avaliação <i class="fa-solid fa-paper-plane ml-1"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTATO / LOCAL ===================== -->
+<section id="contato" class="py-20">
+  <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-8">
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 text-braza font-extrabold text-[12px] tracking-[.3em] uppercase mb-3">
+        <span class="w-8 h-[2px] bg-braza"></span> Onde a fumaça sai
+      </div>
+      <h2 class="font-display text-4xl sm:text-5xl uppercase leading-[.95]">Vem sentir o cheiro <span class="text-cheddar">de perto.</span></h2>
+
+      <div class="mt-6 space-y-3 text-[15px]">
+        <div class="flex gap-4 bg-card border border-white/10 rounded-2xl p-5">
+          <div class="w-11 h-11 rounded-xl bg-braza/15 text-braza flex items-center justify-center shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <strong>Rua das Brasas, 480 — Pinheiros, São Paulo/SP</strong><br>
+            <span class="text-white/55 text-sm">A 5 min do metrô Fradique Coutinho. Salão com 40 lugares + mezanino.</span>
+          </div>
+        </div>
+        <div class="flex gap-4 bg-card border border-white/10 rounded-2xl p-5">
+          <div class="w-11 h-11 rounded-xl bg-cheddar/15 text-cheddar flex items-center justify-center shrink-0"><i class="fa-solid fa-clock"></i></div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <strong>Terça a Domingo • 18h às 23h</strong>
+              <span id="statusPill" class="text-[11px] font-extrabold px-2.5 py-1 rounded-full"></span>
+            </div>
+            <span class="text-white/55 text-sm">Segunda fechado (dia de moer blend e testar molho novo). Delivery até 22h40.</span>
+            <div class="mt-2 h-1.5 bg-white/10 rounded-full overflow-hidden">
+              <div id="hoursBar" class="h-full bg-gradient-to-r from-braza to-cheddar rounded-full transition-all duration-700" style="width:0"></div>
+            </div>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <a href="https://wa.me/5511999990000" target="_blank" rel="noopener" class="flex gap-4 bg-card border border-white/10 rounded-2xl p-5 hover:border-green-500/50 transition group">
+            <div class="w-11 h-11 rounded-xl bg-green-500/15 text-green-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition"><i class="fa-brands fa-whatsapp text-xl"></i></div>
+            <div><strong>(11) 99999-0000</strong><br><span class="text-white/55 text-sm">WhatsApp direto da chapa</span></div>
+          </a>
+          <a href="tel:+551130300480" class="flex gap-4 bg-card border border-white/10 rounded-2xl p-5 hover:border-cheddar/50 transition group">
+            <div class="w-11 h-11 rounded-xl bg-cheddar/15 text-cheddar flex items-center justify-center shrink-0 group-hover:scale-110 transition"><i class="fa-solid fa-phone"></i></div>
+            <div><strong>(11) 3030-0480</strong><br><span class="text-white/55 text-sm">Salão & reservas</span></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex gap-2.5 mt-5">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="flex-1 bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] rounded-2xl p-4 text-center font-extrabold text-sm hover:-translate-y-1 transition">
+          <i class="fa-brands fa-instagram text-xl block mb-1"></i> Instagram<br><span class="text-[12px] opacity-80 font-semibold">@braza.burger • 86k</span>
+        </a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="flex-1 bg-black border border-white/15 rounded-2xl p-4 text-center font-extrabold text-sm hover:-translate-y-1 transition">
+          <i class="fa-brands fa-tiktok text-xl block mb-1"></i> TikTok<br><span class="text-[12px] opacity-60 font-semibold">120k • smash ASMR</span>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" class="flex-1 bg-[#FF0000] rounded-2xl p-4 text-center font-extrabold text-sm hover:-translate-y-1 transition">
+          <i class="fa-brands fa-youtube text-xl block mb-1"></i> YouTube<br><span class="text-[12px] opacity-80 font-semibold">Bastidores da chapa</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="bg-card border border-white/10 rounded-[1.8rem] overflow-hidden shadow-card">
+        <div class="h-64 bg-[#111] relative">
+          <iframe title="Mapa BRAZA" src="https://www.google.com/maps?q=Rua+Fradique+Coutinho+Pinheiros+Sao+Paulo&output=embed" class="w-full h-full grayscale invert-[.92] contrast-[.9] opacity-90" loading="lazy"></iframe>
+          <div class="absolute bottom-3 left-3 bg-coal/90 backdrop-blur border border-white/10 rounded-xl px-4 py-2.5 text-[13px] font-bold flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-braza animate-pulse"></span> Pinheiros • 1,2 km de você
+          </div>
+        </div>
+        <div class="p-6 sm:p-8">
+          <h3 class="font-display text-2xl uppercase">Chama no delivery <span class="text-braza">sem sair do sofá</span></h3>
+          <p class="text-sm text-white/55 mt-1">Resposta em ~2 min no horário de pico. Ou calcule sua entrega:</p>
+          <div class="flex gap-2 mt-4">
+            <input id="cepInput" maxlength="9" placeholder="Seu CEP (ex: 05410-020)" class="flex-1 bg-coal border border-white/10 rounded-xl px-4 py-3.5 text-sm font-semibold tracking-wide">
+            <button onclick="calcDelivery()" class="btn-fire px-6 rounded-xl font-extrabold text-sm whitespace-nowrap">Calcular</button>
+          </div>
+          <div id="cepResult" class="hidden mt-3 text-sm bg-green-500/10 border border-green-500/30 rounded-xl px-4 py-3"></div>
+
+          <div class="dashed-line my-5 opacity-40"></div>
+
+          <label class="text-[12px] font-extrabold uppercase tracking-widest text-white/50">Mensagem rápida</label>
+          <div class="flex gap-2 mt-2">
+            <input id="quickMsg" placeholder="Ex: Quero 2 Brutal + 1 fritas..." class="flex-1 bg-coal border border-white/10 rounded-xl px-4 py-3.5 text-sm">
+            <button onclick="sendQuick()" class="w-[52px] shrink-0 rounded-xl bg-[#1FA855] hover:bg-[#25D366] hover:text-black transition flex items-center justify-center text-xl" aria-label="Enviar no WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </button>
+          </div>
+
+          <button onclick="toggleCart(true)" class="btn-cheddar w-full mt-4 py-4 rounded-xl font-extrabold flex items-center justify-center gap-2">
+            <i class="fa-solid fa-basket-shopping"></i> Abrir meu carrinho
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSTA STRIP -->
+  <div class="max-w-7xl mx-auto px-4 mt-12 reveal">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-display text-2xl uppercase">@braza.burger <span class="text-white/30">• segue a fumaça</span></h3>
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="text-sm font-bold text-braza hover:text-cheddar transition">Seguir <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i></a>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop" class="h-44 w-full object-cover rounded-2xl border border-white/10 hover:scale-[1.03] hover:border-braza/50 transition cursor-pointer" alt="Instagram BRAZA">
+      <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=400&auto=format&fit=crop" class="h-44 w-full object-cover rounded-2xl border border-white/10 hover:scale-[1.03] hover:border-braza/50 transition cursor-pointer" alt="Instagram BRAZA">
+      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=400&auto=format&fit=crop" class="h-44 w-full object-cover rounded-2xl border border-white/10 hover:scale-[1.03] hover:border-braza/50 transition cursor-pointer" alt="Instagram BRAZA">
+      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=400&auto=format&fit=crop" class="h-44 w-full object-cover rounded-2xl border border-white/10 hover:scale-[1.03] hover:border-braza/50 transition cursor-pointer" alt="Instagram BRAZA">
+      <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=400&auto=format&fit=crop" class="h-44 w-full object-cover rounded-2xl border border-white/10 hover:scale-[1.03] hover:border-braza/50 transition cursor-pointer hidden sm:block" alt="Instagram BRAZA">
+      <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?q=80&w=400&auto=format&fit=crop" class="h-44 w-full object-cover rounded-2xl border border-white/10 hover:scale-[1.03] hover:border-braza/50 transition cursor-pointer hidden sm:block" alt="Instagram BRAZA">
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="border-t border-white/10 bg-[#070708] pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-braza to-ember flex items-center justify-center text-2xl">🔥</div>
+        <div>
+          <div class="font-display text-2xl">BRAZA<span class="text-braza">.</span></div>
+          <div class="text-[10px] tracking-[.3em] text-cheddar font-bold">BURGER ARTESANAL</div>
+        </div>
+      </div>
+      <p class="text-sm text-white/50 mt-4 leading-relaxed">
+        Smash de verdade desde 2018. Blend Angus moído no dia, pão fresco e molhos defumados que ninguém copia igual.
+      </p>
+      <div class="flex gap-2 mt-4">
+        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-braza hover:border-braza transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-black hover:border-white/40 transition" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://wa.me/5511999990000" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] hover:text-black transition" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#cardapio" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition" aria-label="Pedir pelo site"><i class="fa-solid fa-bag-shopping text-sm"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="font-extrabold text-sm tracking-widest uppercase text-white/80 mb-4">Navegação</h4>
+      <ul class="space-y-2.5 text-sm text-white/55 font-semibold">
+        <li><a href="#inicio" class="hover:text-cheddar transition">Início</a></li>
+        <li><a href="#mais-vendidos" class="hover:text-cheddar transition">Os Mais Vendidos</a></li>
+        <li><a href="#cardapio" class="hover:text-cheddar transition">Cardápio Completo</a></li>
+        <li><a href="#sobre" class="hover:text-cheddar transition">Nossa História</a></li>
+        <li><a href="#avaliacoes" class="hover:text-cheddar transition">Avaliações</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-extrabold text-sm tracking-widest uppercase text-white/80 mb-4">Funcionamento</h4>
+      <ul class="space-y-2.5 text-sm text-white/55 font-semibold">
+        <li class="flex gap-2"><i class="fa-solid fa-location-dot text-braza mt-0.5"></i> Rua das Brasas, 480 — Pinheiros<br>São Paulo/SP • CEP 05410-020</li>
+        <li class="flex gap-2"><i class="fa-solid fa-clock text-cheddar mt-0.5"></i> Terça a Domingo • 18h às 23h<br><span class="text-white/35">Segunda: fechado</span></li>
+        <li class="flex gap-2"><i class="fa-solid fa-phone text-green-400 mt-0.5"></i> (11) 99999-0000</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-extrabold text-sm tracking-widest uppercase text-white/80 mb-4">Clube Braza 🔥</h4>
+      <p class="text-sm text-white/55">Ganhe <strong class="text-cheddar">15% OFF</strong> no primeiro pedido + novidades defumadas.</p>
+      <div class="flex gap-2 mt-3">
+        <input id="newsInput" placeholder="Seu melhor e-mail" class="flex-1 min-w-0 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm">
+        <button onclick="subscribe()" class="btn-fire px-4 rounded-xl font-bold" aria-label="Assinar newsletter"><i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+      <p id="newsMsg" class="hidden text-[13px] mt-2 text-green-400 font-bold"></p>
+      <div class="mt-4 flex items-center gap-2 text-[12px] text-white/40">
+        <i class="fa-solid fa-shield-halved"></i> Seus dados protegidos (LGPD).
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-white/35 font-semibold">
+    <span>© 2026 BRAZA Burger Artesanal • CNPJ 00.000.000/0001-00 • Todos os direitos reservados.</span>
+    <span class="flex gap-4">
+      <a href="#" class="hover:text-white">Privacidade</a>
+      <a href="#" class="hover:text-white">Termos</a>
+      <a href="#" class="hover:text-white">Alergênicos</a>
+    </span>
+  </div>
+  <p class="max-w-7xl mx-auto px-4 mt-3 text-[11px] text-white/25 leading-relaxed">
+    Aviso: imagens meramente ilustrativas (mas juramos que o real é mais bonito). Preços sujeitos a alteração sem aviso prévio.
+    Consumo de carne mal passada é por sua conta e risco — a gente recomenda o ponto rosado, que é onde a mágica acontece.
+  </p>
+</footer>
+
+<!-- ===================== FLOATING BUTTONS ===================== -->
+<a href="https://wa.me/5511999990000?text=Ol%C3%A1%20BRAZA!%20Quero%20pedir%20agora!" target="_blank" rel="noopener" class="fixed bottom-5 right-5 z-[70] w-14 h-14 rounded-full bg-[#25D366] text-black flex items-center justify-center text-2xl shadow-[0_10px_35px_rgba(37,211,102,.5)] hover:scale-110 transition" style="animation:pulseGlow 2.4s infinite" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<button id="mobileCartBar" onclick="toggleCart(true)" class="fixed bottom-5 left-5 right-24 z-[70] sm:hidden hidden bg-cheddar text-black font-extrabold rounded-full py-4 px-6 shadow-glowYellow items-center justify-between">
+  <span id="mobileCartText">Ver carrinho • R$ 0,00</span>
+  <i class="fa-solid fa-arrow-right"></i>
+</button>
+
+<!-- ===================== CART DRAWER ===================== -->
+<div id="cartOverlay" onclick="toggleCart(false)" class="fixed inset-0 z-[95] bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity"></div>
+
+<aside id="cartDrawer" class="fixed top-0 right-0 bottom-0 z-[96] w-full max-w-[440px] bg-smoke border-l border-white/10 translate-x-full transition-transform duration-500 flex flex-col" style="transition-timing-function:cubic-bezier(.2,.8,.2,1)">
+  <div class="p-5 border-b border-white/10 flex items-center justify-between bg-card">
+    <div>
+      <h3 class="font-display text-2xl uppercase">Seu pedido <span class="text-braza">🔥</span></h3>
+      <p class="text-[12px] text-white/50 font-semibold" id="cartSub">Carrinho vazio — a chapa tá te esperando</p>
+    </div>
+    <button onclick="toggleCart(false)" class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:bg-braza transition flex items-center justify-center" aria-label="Fechar carrinho">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="px-5 pt-4">
+    <div class="bg-white/[.03] border border-dashed border-white/15 rounded-xl p-3 flex gap-2">
+      <input id="couponInput" placeholder="Cupom (tente BRAZA10)" class="flex-1 min-w-0 bg-transparent text-sm font-bold placeholder:text-white/30 placeholder:font-semibold px-2">
+      <button onclick="applyCoupon()" class="text-[12px] font-extrabold bg-white/10 hover:bg-cheddar hover:text-black transition px-4 py-2 rounded-lg">APLICAR</button>
+    </div>
+    <div id="freeShipBar" class="mt-3 text-[12px] font-bold text-white/60"></div>
+    <div class="mt-1.5 h-2 bg-white/10 rounded-full overflow-hidden">
+      <div id="freeShipFill" class="h-full w-0 bg-gradient-to-r from-braza to-cheddar rounded-full transition-all duration-500"></div>
+    </div>
+  </div>
+
+  <div id="cartItems" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+  <div class="p-5 border-t border-white/10 bg-card space-y-2 text-sm font-semibold">
+    <div class="flex justify-between text-white/60"><span>Subtotal</span><span id="ctSub">R$ 0,00</span></div>
+    <div class="flex justify-between text-white/60"><span>Desconto <span id="ctCouponLabel" class="text-cheddar"></span></span><span id="ctDesc" class="text-green-400">—</span></div>
+    <div class="flex justify-between text-white/60"><span>Entrega</span><span id="ctShip">R$ 7,90</span></div>
+    <div class="dashed-line opacity-30 !my-3"></div>
+    <div class="flex justify-between items-center">
+      <span class="font-extrabold">Total</span>
+      <span id="ctTotal" class="font-display text-3xl text-cheddar">R$ 0,00</span>
+    </div>
+    <button onclick="openCheckout()" class="btn-fire w-full py-4 rounded-2xl font-extrabold mt-2 flex items-center justify-center gap-2 text-[15px]">
+      <i class="fa-solid fa-fire"></i> Finalizar pedido
+    </button>
+    <button onclick="toggleCart(false);scrollToMenu()" class="w-full py-3 rounded-2xl font-bold text-white/60 hover:text-white hover:bg-white/5 transition text-[13px]">
+      + Adicionar mais delícias
+    </button>
+  </div>
+</aside>
+
+<!-- ===================== PRODUCT MODAL ===================== -->
+<div id="prodModal" class="fixed inset-0 z-[98] hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeProduct()"></div>
+  <div class="relative w-full max-w-2xl bg-smoke border border-white/10 rounded-[1.8rem] overflow-hidden shadow-card max-h-[92vh] overflow-y-auto">
+    <div class="grid sm:grid-cols-2">
+      <div class="relative h-64 sm:h-full min-h-[280px]">
+        <img id="pmImg" src="" class="absolute inset-0 w-full h-full object-cover" alt="Produto BRAZA">
+        <div id="pmTag" class="absolute top-4 left-4 bg-braza text-white text-[11px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-wider shadow-glowRed"></div>
+      </div>
+      <div class="p-6 sm:p-7">
+        <button onclick="closeProduct()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 backdrop-blur border border-white/15 flex items-center justify-center hover:bg-braza transition" aria-label="Fechar">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+        <div id="pmStars" class="flex gap-0.5 star text-sm mb-2 items-center"></div>
+        <h3 id="pmName" class="font-display text-3xl uppercase leading-none"></h3>
+        <p id="pmDesc" class="text-[13.5px] text-white/60 mt-3 leading-relaxed"></p>
+
+        <div class="mt-4">
+          <div class="text-[11px] font-extrabold uppercase tracking-widest text-white/50 mb-2">Ponto da carne 🔥</div>
+          <div id="pmPonto" class="flex gap-2"></div>
+        </div>
+
+        <div class="mt-4">
+          <div class="text-[11px] font-extrabold uppercase tracking-widest text-white/50 mb-2">Turbinar (+ extras)</div>
+          <div id="pmExtras" class="space-y-2"></div>
+        </div>
+
+        <div class="flex items-center justify-between mt-5">
+          <div class="flex items-center gap-3 bg-coal border border-white/10 rounded-xl px-2 py-1.5">
+            <button onclick="pmQtyChange(-1)" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-braza transition font-extrabold" aria-label="Menos">−</button>
+            <span id="pmQty" class="font-display text-xl w-6 text-center">1</span>
+            <button onclick="pmQtyChange(1)" class="w-9 h-9 rounded-lg bg-white/5 hover:bg-braza transition font-extrabold" aria-label="Mais">+</button>
+          </div>
+          <div id="pmPrice" class="font-display text-3xl text-cheddar"></div>
+        </div>
+
+        <button onclick="confirmProduct()" class="btn-fire w-full mt-4 py-4 rounded-2xl font-extrabold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-basket-shopping"></i> Adicionar ao pedido
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CHECKOUT MODAL ===================== -->
+<div id="checkModal" class="fixed inset-0 z-[99] hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" onclick="closeCheckout()"></div>
+  <div class="relative w-full max-w-lg bg-smoke border border-white/10 rounded-[1.8rem] p-6 sm:p-8 max-h-[92vh] overflow-y-auto shadow-card">
+    <button onclick="closeCheckout()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-braza transition" aria-label="Fechar">
+      <i class="fa-solid fa-xmark text-sm"></i>
+    </button>
+
+    <div id="checkForm">
+      <h3 class="font-display text-3xl uppercase">Quase lá! <span class="text-cheddar">Onde entregamos?</span></h3>
+      <p class="text-sm text-white/55 mt-1">Preencha rapidinho — enviamos tudo prontinho no WhatsApp.</p>
+
+      <div class="space-y-3 mt-5">
+        <input id="fName" placeholder="Seu nome *" class="w-full bg-coal border border-white/10 rounded-xl px-4 py-3.5 text-sm">
+        <div class="grid grid-cols-3 gap-3">
+          <input id="fStreet" placeholder="Rua + número *" class="col-span-2 bg-coal border border-white/10 rounded-xl px-4 py-3.5 text-sm">
+          <input id="fComp" placeholder="Apto / bloco" class="bg-coal border border-white/10 rounded-xl px-4 py-3.5 text-sm">
+        </div>
+        <input id="fNeigh" placeholder="Bairro *" class="w-full bg-coal border border-white/10 rounded-xl px-4 py-3.5 text-sm">
+        <div>
+          <div class="text-[11px] font-extrabold uppercase tracking-widest text-white/50 mb-2">Pagamento</div>
+          <div class="grid grid-cols-3 gap-2" id="payBtns">
+            <button data-pay="Pix" class="payBtn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-cheddar transition">⚡ Pix</button>
+            <button data-pay="Cartão" class="payBtn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-cheddar transition">💳 Cartão</button>
+            <button data-pay="Dinheiro" class="payBtn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-cheddar transition">💵 Dinheiro</button>
+          </div>
+        </div>
+        <textarea id="fObs" rows="2" placeholder="Observações (ex: ponto bem passado, sem cebola, troco para R$100...)" class="w-full bg-coal border border-white/10 rounded-xl px-4 py-3.5 text-sm"></textarea>
+      </div>
+
+      <div id="checkSummary" class="mt-4 bg-coal/70 border border-white/10 rounded-xl p-4 text-[13px]"></div>
+
+      <button onclick="finishOrder()" class="btn-whats w-full mt-4 py-4 rounded-2xl font-extrabold text-white flex items-center justify-center gap-2">
+        <i class="fa-brands fa-whatsapp text-xl"></i> Confirmar no WhatsApp
+      </button>
+    </div>
+
+    <div id="checkSuccess" class="hidden text-center py-8">
+      <div class="w-20 h-20 mx-auto rounded-full bg-green-500/15 border border-green-500/40 flex items-center justify-center text-4xl">✅</div>
+      <h3 class="font-display text-4xl uppercase mt-5">Pedido <span class="text-green-400">na chapa!</span></h3>
+      <p class="text-sm text-white/60 mt-2">
+        Abrimos seu WhatsApp com tudo prontinho.<br>
+        Tempo estimado: <strong class="text-white">25–35 min</strong>. Fica de olho no celular 👀
+      </p>
+      <div id="orderNum" class="inline-block mt-4 bg-white/5 border border-dashed border-white/20 rounded-xl px-5 py-2.5 font-display text-xl tracking-wider"></div>
+      <div>
+        <button onclick="closeCheckout();toggleCart(false)" class="btn-cheddar mt-6 px-8 py-3.5 rounded-xl font-extrabold text-sm">Fechar e acompanhar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TOASTS ===================== -->
+<div id="toasts" class="fixed bottom-5 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-24 sm:bottom-6 z-[120] flex flex-col gap-2 items-center sm:items-end w-[92%] sm:w-auto"></div>
+
+<script>
+/* ============================================================
+   DATA
+============================================================ */
+const WA = '5511999990000';
+
+const MENU = [
+  { id:'brutal', cat:'premium', name:'Brutal Cheddar Bacon',
+    desc:'Pão brioche tostado na manteiga, blend Angus 180g prensado na chapa, cheddar inglês derretido em cascata, bacon crocante caramelizado no mascavo, cebola crispy e o nosso molho Braza defumado.',
+    price:32.90, old:39.90, img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop',
+    tag:'Nº1 MAIS PEDIDO', rating:5.0, reviews:2314 },
+  { id:'smashduplo', cat:'smash', name:'Smash Duplo da Casa',
+    desc:'Dois smash de 90g prensados a 300°C para criar aquela crosta caramelizada, queijo prato duplo derretido, picles artesanal, alface crocante, tomate fresquinho e o molho especial da casa.',
+    price:28.90, img:'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=800&auto=format&fit=crop',
+    tag:"CHEF'S CHOICE", rating:4.9, reviews:1892 },
+  { id:'trufado', cat:'premium', name:'Trufado Defumado',
+    desc:'Blend Angus 180g, brie grelhado derretendo no calor da carne, cogumelos trufados salteados, rúcula fresca e maionese de alho defumado, tudo servido no pão australiano macio.',
+    price:38.90, img:'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop',
+    tag:'EDIÇÃO LIMITADA', rating:5.0, reviews:964 },
+  { id:'classico', cat:'classicos', name:'Clássico Braza',
+    desc:'O que nunca erra: blend 150g, cheddar, alface, tomate, cebola roxa, picles e molho da casa no brioche macio.',
+    price:24.90, img:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=800&auto=format&fit=crop',
+    tag:'QUERIDINHO', rating:4.8, reviews:3102 },
+  { id:'baconjam', cat:'smash', name:'Smash Bacon Jam',
+    desc:'Smash duplo, queijo prato, geleia de bacon artesanal agridoce, rúcula e maionese de alho. Equilíbrio perfeito doce-salgado.',
+    price:31.90, img:'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=800&auto=format&fit=crop',
+    tag:'NOVO', rating:4.9, reviews:412 },
+  { id:'duplobacon', cat:'premium', name:'Monstro Triple Bacon',
+    desc:'Para os destemidos: 3 smash, triplo cheddar, triplo bacon crocante, onion rings e barbecue de goiabada. Desafio aceito?',
+    price:44.90, img:'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop',
+    tag:'DESAFIO BRAZA', rating:4.9, reviews:688 },
+  { id:'veggie', cat:'veggie', name:'Veggie Defumado',
+    desc:'Falafel crocante de grão-de-bico, queijo coalho grelhado, vinagrete defumado, alface e maionese vegana de ervas no pão de batata.',
+    price:26.90, img:'https://images.unsplash.com/photo-1520072959219-c595dc870360?q=80&w=800&auto=format&fit=crop',
+    tag:'100% VEGGIE', rating:4.7, reviews:523 },
+  { id:'frango', cat:'classicos', name:'Crispy Chicken Braza',
+    desc:'Peito crocante marinado por 12h, cheddar, coleslaw cremosa, picles e mel picante. Uma crocância que se ouve.',
+    price:27.90, img:'https://images.unsplash.com/photo-1606755962773-d324e0a13086?q=80&w=800&auto=format&fit=crop',
+    tag:'CROCANTE', rating:4.8, reviews:741 },
+  { id:'fritas', cat:'acompanha', name:'Fritas Braza + Cheddar',
+    desc:'Batata rústica com páprica defumada, cheddar cremoso, bacon bits, cebolinha e molho Braza. Porção pra dividir (ou não).',
+    price:19.90, img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=800&auto=format&fit=crop',
+    tag:'PRA DIVIDIR', rating:4.9, reviews:1544 },
+  { id:'onion', cat:'acompanha', name:'Onion Rings da Casa',
+    desc:'Anéis empanados na cerveja, super crocantes, servidos com barbecue de goiabada e ranch defumado.',
+    price:16.90, img:'https://images.unsplash.com/photo-1639024471283-03518883512d?q=80&w=800&auto=format&fit=crop',
+    tag:'CROCANTE', rating:4.8, reviews:689 },
+  { id:'milkshake', cat:'bebidas', name:'Milkshake Ninho + Nutella',
+    desc:'500ml de cremosidade: leite ninho batido, calda de Nutella, chantilly e farofa de brownie. Bomba gelada.',
+    price:18.90, img:'https://images.unsplash.com/photo-1577805947697-89e18249d767?q=80&w=800&auto=format&fit=crop',
+    tag:'GELADO', rating:4.9, reviews:932 },
+  { id:'brownie', cat:'sobremesa', name:'Brownie Vulcão + Sorvete',
+    desc:'Brownie de chocolate 70% quentinho, sorvete de creme, calda quente e flor de sal. Fecha a noite com chave de ouro.',
+    price:16.90, img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=800&auto=format&fit=crop',
+    tag:'SOBREMESA', rating:5.0, reviews:517 }
+];
+
+const CATS = [
+  { id:'all', label:'Tudo', icon:'fa-fire' },
+  { id:'smash', label:'Smash', icon:'fa-burger' },
+  { id:'classicos', label:'Clássicos', icon:'fa-star' },
+  { id:'premium', label:'Premium', icon:'fa-crown' },
+  { id:'veggie', label:'Veggie', icon:'fa-leaf' },
+  { id:'acompanha', label:'Acompanhamentos', icon:'fa-bowl-food' },
+  { id:'bebidas', label:'Bebidas', icon:'fa-whiskey-glass' },
+  { id:'sobremesa', label:'Sobremesas', icon:'fa-ice-cream' }
+];
+
+let REVIEWS = [
+  { n:'Camila R. — Pinheiros', s:5,
+    t:'Ponto da carne PERFEITO, rosadinho por dentro e crocante por fora. O cheddar vem escorrendo de verdade, não é aquele fatiado triste. Chegou em 26 minutos ainda chiando!',
+    img:'https://i.pravatar.cc/100?img=47', d:'há 2 dias • iFood' },
+  { n:'Diego M. — Vila Madalena', s:5,
+    t:'Melhor custo-benefício de SP. O Smash Duplo com as fritas e aquele molho defumado... virei cliente fiel. Entrega mais rápida que muito fast-food por aí.',
+    img:'https://i.pravatar.cc/100?img=13', d:'há 5 dias • Google' },
+  { n:'Júlia & Rafa — Perdizes', s:5,
+    t:'Pedimos o Trufado Defumado numa sexta e foi surreal. Pão australiano macio, brie derretido, cogumelo no ponto. Dá pra sentir que é tudo fresco, feito na hora.',
+    img:'https://i.pravatar.cc/100?img=32', d:'há 1 semana • Instagram' },
+  { n:'Thiago S. — Lapa', s:5,
+    t:'O Monstro Triple Bacon é sacanagem de tão bom. Gigante, suculento e o barbecue de goiabada é genial. Dividi com a patroa e ainda sobrou (mentira, não sobrou).',
+    img:'https://i.pravatar.cc/100?img=59', d:'há 2 semanas • Google' },
+  { n:'Beatriz L. — Jardins', s:4,
+    t:'Sou vegetariana e o Veggie Defumado me conquistou. Falafel crocante, queijo coalho no ponto. Finalmente um veggie que não parece adaptação — parece protagonista.',
+    img:'https://i.pravatar.cc/100?img=44', d:'há 3 semanas • iFood' }
+];
+
+/* ============================================================
+   HELPERS
+============================================================ */
+const $ = id => document.getElementById(id);
+const BRL = v => v.toLocaleString('pt-BR', { style:'currency', currency:'BRL' });
+const stars = n => Array.from({ length:5 }, (_, i) =>
+  `<i class="fa-${i < Math.round(n) ? 'solid' : 'regular'} fa-star ${i < Math.round(n) ? 'star' : 'text-white/20'}"></i>`
+).join('');
+
+/* ============================================================
+   PRELOADER
+============================================================ */
+let lp = 0;
+const li = setInterval(() => {
+  lp += Math.random() * 28;
+  if (lp >= 100) {
+    lp = 100;
+    clearInterval(li);
+    setTimeout(() => {
+      $('preloader').style.opacity = 0;
+      $('preloader').style.visibility = 'hidden';
+      revealInit();
+    }, 350);
+  }
+  $('loadBar').style.width = lp + '%';
+}, 180);
+
+/* ============================================================
+   HEADER / MOBILE MENU
+============================================================ */
+window.addEventListener('scroll', () => {
+  const nav = $('navBox');
+  if (window.scrollY > 40) nav.classList.add('!bg-coal/90', 'shadow-card');
+  else nav.classList.remove('!bg-coal/90', 'shadow-card');
+});
+
+$('mobileBtn').onclick = () => $('mobileMenu').classList.toggle('hidden');
+document.querySelectorAll('#mobileMenu a').forEach(a => {
+  a.addEventListener('click', () => $('mobileMenu').classList.add('hidden'));
+});
+
+function scrollToMenu(){ document.querySelector('#cardapio').scrollIntoView({ behavior:'smooth' }); }
+
+/* ============================================================
+   MARQUEE
+============================================================ */
+const MQ = ['100% Angus', 'Pão fresco todo dia', 'Smash na chapa a 300°', 'Cheddar inglês em cascata', 'Molhos defumados', 'Entrega em 35 min'];
+const mqHTML = MQ.map(t => `<span class="flex items-center gap-8 whitespace-nowrap"><span>${t}</span><span class="text-braza">🔥</span></span>`).join('');
+$('marqueeA').innerHTML = mqHTML;
+$('marqueeB').innerHTML = mqHTML;
+
+/* ============================================================
+   EMBERS CANVAS
+============================================================ */
+const cv = $('embers'), ctx = cv.getContext('2d');
+let P = [];
+function sizeCv(){ cv.width = cv.offsetWidth; cv.height = cv.offsetHeight; }
+sizeCv();
+window.addEventListener('resize', sizeCv);
+for (let i = 0; i < 50; i++) {
+  P.push({ x:Math.random(), y:Math.random(), r:Math.random()*2.5 + .5, s:Math.random()*.0018 + .0006, o:Math.random()*.7 + .2, ph:Math.random()*6.28 });
+}
+(function loop(t){
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  P.forEach(p => {
+    p.y -= p.s;
+    if (p.y < -.02) { p.y = 1.02; p.x = Math.random(); }
+    const x = p.x * cv.width + Math.sin(t/1400 + p.ph) * 18;
+    const y = p.y * cv.height;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, p.r*4);
+    g.addColorStop(0, `rgba(255,${90 + Math.floor(Math.random()*60)},30,${p.o})`);
+    g.addColorStop(1, 'transparent');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(x, y, p.r*4, 0, 7);
+    ctx.fill();
+  });
+  requestAnimationFrame(loop);
+})(0);
+
+/* ============================================================
+   BEST SELLERS
+============================================================ */
+function bestCard(m, i){
+  const accents = ['from-braza to-ember', 'from-cheddar to-ember', 'from-ember to-brazaDark'];
+  const scripts = ['o queridinho', 'o da casa', 'o sofisticado'];
+  return `
+  <article class="card-tilt reveal bg-card border border-white/10 rounded-[1.6rem] overflow-hidden flex flex-col">
+    <div class="relative h-64 overflow-hidden group">
+      <img src="${m.img}" alt="${m.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent"></div>
+      <span class="absolute top-4 left-4 bg-gradient-to-r ${accents[i%3]} text-white text-[11px] font-extrabold px-3.5 py-1.5 rounded-full tracking-wider shadow-glowRed">${m.tag}</span>
+      <span class="absolute top-4 right-4 bg-black/60 backdrop-blur border border-white/15 text-[12px] font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+        <i class="fa-solid fa-star star"></i> ${m.rating} <span class="text-white/50 font-semibold">(${m.reviews.toLocaleString('pt-BR')})</span>
+      </span>
+      ${m.old ? `<span class="absolute bottom-4 right-4 bg-cheddar text-black font-display text-xl px-3 py-1 rounded-xl rotate-3">-${Math.round((1 - m.price/m.old)*100)}%</span>` : ''}
+    </div>
+    <div class="p-6 flex flex-col flex-1">
+      <div class="font-script text-cheddar text-xl -rotate-1">${scripts[i]}</div>
+      <h3 class="font-display text-[26px] uppercase leading-none mt-1">${m.name}</h3>
+      <p class="text-[13.5px] text-white/60 leading-relaxed mt-3 flex-1">${m.desc}</p>
+      <div class="flex items-center gap-2 mt-4 text-[12px] font-bold text-white/50 flex-wrap">
+        <i class="fa-solid fa-fire text-ember"></i> 180g Angus
+        <span>•</span>
+        <i class="fa-solid fa-wheat-awn text-cheddar"></i> Brioche
+        <span>•</span>
+        <i class="fa-solid fa-clock text-green-400"></i> ~30min
+      </div>
+      <div class="flex items-center justify-between mt-5 pt-5 border-t border-dashed border-white/15">
+        <div>
+          ${m.old ? `<div class="text-[13px] text-white/35 line-through font-bold">${BRL(m.old)}</div>` : ''}
+          <div class="font-display text-[28px] text-cheddar leading-none">${BRL(m.price)}</div>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="openProduct('${m.id}')" class="w-12 h-12 rounded-xl border border-white/15 hover:border-cheddar hover:text-cheddar transition flex items-center justify-center" title="Ver detalhes" aria-label="Ver detalhes">
+            <i class="fa-solid fa-eye"></i>
+          </button>
+          <button onclick="quickAdd('${m.id}')" class="btn-fire px-5 h-12 rounded-xl font-extrabold text-sm flex items-center gap-2">
+            <i class="fa-solid fa-plus"></i> Pedir
+          </button>
+        </div>
+      </div>
+    </div>
+  </article>`;
+}
+$('bestSellers').innerHTML = ['brutal','smashduplo','trufado']
+  .map(id => MENU.find(m => m.id === id))
+  .map(bestCard)
+  .join('');
+
+/* ============================================================
+   MENU GRID
+============================================================ */
+let activeCat = 'all';
+
+function renderTabs(){
+  $('categoryTabs').innerHTML = CATS.map(c => `
+    <button onclick="setCat('${c.id}')" class="shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 text-[13px] font-bold text-white/70 hover:border-braza/60 hover:text-white transition ${activeCat === c.id ? 'chip-active' : ''} bg-card">
+      <i class="fa-solid ${c.icon} text-[12px]"></i>${c.label}
+    </button>`).join('');
+}
+function setCat(id){ activeCat = id; renderMenu(); }
+function clearSearch(){ $('searchInput').value = ''; renderMenu(); }
+
+const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+function renderMenu(){
+  renderTabs();
+  const q = norm($('searchInput').value);
+  const list = MENU.filter(m =>
+    (activeCat === 'all' || m.cat === activeCat) &&
+    (!q || norm(m.name + ' ' + m.desc).includes(q))
+  );
+
+  $('menuEmpty').classList.toggle('hidden', list.length > 0);
+  $('menuGrid').innerHTML = list.map(m => `
+    <article class="card-tilt bg-card border border-white/10 rounded-3xl overflow-hidden flex flex-col group">
+      <div class="relative h-48 overflow-hidden cursor-pointer" onclick="openProduct('${m.id}')">
+        <img src="${m.img}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="${m.name}">
+        <div class="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent"></div>
+        <span class="absolute top-3 left-3 bg-black/65 backdrop-blur border border-white/15 text-[10px] font-extrabold px-2.5 py-1 rounded-full tracking-wider uppercase">${m.tag}</span>
+        <span class="absolute bottom-3 left-3 flex gap-0.5 text-[11px]">${stars(m.rating)}</span>
+      </div>
+      <div class="p-5 flex flex-col flex-1">
+        <h3 class="font-display text-lg uppercase leading-tight">${m.name}</h3>
+        <p class="text-[12.5px] text-white/55 mt-1.5 leading-relaxed flex-1 line-clamp-3">${m.desc}</p>
+        <div class="flex items-center justify-between mt-4">
+          <div class="font-display text-2xl text-white">${BRL(m.price)}</div>
+          <button onclick="quickAdd('${m.id}')" class="btn-fire w-11 h-11 rounded-xl flex items-center justify-center text-lg" title="Adicionar ao carrinho" aria-label="Adicionar ${m.name}">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </article>`).join('');
+}
+renderMenu();
+
+/* ============================================================
+   BUILDER
+============================================================ */
+const BASE = 24.90;
+let builderExtras = new Set();
+
+document.querySelectorAll('.extraBtn').forEach(b => {
+  b.onclick = () => {
+    const k = b.dataset.name + '|' + b.dataset.price;
+    if (builderExtras.has(k)) {
+      builderExtras.delete(k);
+      b.classList.remove('!bg-cheddar','!text-black','!border-cheddar');
+    } else {
+      builderExtras.add(k);
+      b.classList.add('!bg-cheddar','!text-black','!border-cheddar');
+    }
+    calcBuilder();
+  };
+});
+
+function calcBuilder(){
+  const sp = id => $(id).value.split('|');
+  const [pao, pa] = [sp('bPao')[0], +sp('bPao')[1]];
+  const [car, ca] = [sp('bCarne')[0], +sp('bCarne')[1]];
+  const [que, qa] = [sp('bQueijo')[0], +sp('bQueijo')[1]];
+  const [mol, ma] = [sp('bMolho')[0], +sp('bMolho')[1]];
+
+  let ex = 0;
+  builderExtras.forEach(k => ex += +k.split('|')[1]);
+
+  const total = BASE + pa + ca + qa + ma + ex;
+  const extrasTxt = builderExtras.size ? ' + ' + [...builderExtras].map(k => k.split('|')[0]).join(', ') : '';
+  const desc = `${car} + ${que} + ${mol} no ${pao}${extrasTxt}`;
+
+  $('builderDesc').textContent = desc;
+  $('builderPrice').textContent = BRL(total);
+  return { total, desc };
+}
+calcBuilder();
+
+function addBuilderToCart(){
+  const { total, desc } = calcBuilder();
+  addItem({
+    id: 'custom' + Date.now(),
+    name: 'Braza Customizado',
+    desc,
+    price: total,
+    img: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=200&auto=format&fit=crop',
+    qty: 1
+  });
+}
+
+/* ============================================================
+   CART
+============================================================ */
+let cart = [], coupon = null;
+const COUPONS = {
+  BRAZA10:   { p:.10, label:'BRAZA10 (-10%)' },
+  BEMVINDO15:{ p:.15, label:'BEMVINDO15 (-15%)' },
+  FRETEZERO: { free:true, label:'FRETEZERO (frete grátis)' }
+};
+
+function quickAdd(id){
+  const m = MENU.find(x => x.id === id);
+  addItem({ ...m, qty:1, ponto:'Ao ponto rosado', extras:[] });
+}
+
+function addItem(item){
+  const same = cart.find(c =>
+    c.id === item.id &&
+    JSON.stringify(c.extras || []) === JSON.stringify(item.extras || []) &&
+    c.ponto === item.ponto
+  );
+  if (same) same.qty += item.qty || 1;
+  else cart.push({ ...item, qty: item.qty || 1 });
+
+  updateCart();
+  toast(`<strong>${item.name}</strong> no carrinho! 🔥`, `${BRL(item.price)} • Toque na sacola pra finalizar`);
+  bumpCart();
+}
+
+function bumpCart(){
+  const c = $('cartCount');
+  c.style.transform = 'scale(1.4)';
+  setTimeout(() => c.style.transform = 'scale(1)', 200);
+}
+
+function chQty(i, d){
+  cart[i].qty += d;
+  if (cart[i].qty <= 0) cart.splice(i, 1);
+  updateCart();
+}
+function rmItem(i){ cart.splice(i, 1); updateCart(); }
+
+function totals(){
+  const sub = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  let desc = 0, ship = cart.length ? 7.90 : 0;
+  if (coupon) {
+    if (coupon.p) desc = sub * coupon.p;
+    if (coupon.free) ship = 0;
+  }
+  if (sub - desc >= 60) ship = 0;
+  return { sub, desc, ship, total: Math.max(0, sub - desc + ship) };
+}
+
+function updateCart(){
+  const n = cart.reduce((s, c) => s + c.qty, 0);
+  const t = totals();
+
+  $('cartCount').textContent = n;
+  $('cartCount').style.transform = n ? 'scale(1)' : 'scale(0)';
+
+  $('cartSub').textContent = n
+    ? `${n} item(ns) • ${BRL(t.total)} com entrega`
+    : 'Carrinho vazio — a chapa tá te esperando';
+
+  const bar = $('mobileCartBar');
+  bar.classList.toggle('hidden', !n);
+  bar.classList.toggle('flex', !!n);
+  $('mobileCartText').textContent = `Ver carrinho • ${BRL(t.total)}`;
+
+  $('ctSub').textContent = BRL(t.sub);
+  $('ctDesc').textContent = t.desc ? '-' + BRL(t.desc) : '—';
+  $('ctShip').textContent = (t.ship === 0 && cart.length) ? 'GRÁTIS 🎉' : BRL(t.ship);
+  $('ctTotal').textContent = BRL(t.total);
+  $('ctCouponLabel').textContent = coupon ? '• ' + coupon.label : '';
+
+  const pct = Math.min(100, ((t.sub - t.desc) / 60) * 100);
+  $('freeShipFill').style.width = pct + '%';
+  $('freeShipBar').innerHTML = (t.sub - t.desc) >= 60
+    ? `🎉 <span class="text-green-400">Você ganhou FRETE GRÁTIS!</span>`
+    : `Faltam <strong class="text-cheddar">${BRL(60 - (t.sub - t.desc))}</strong> pro frete grátis`;
+
+  $('cartItems').innerHTML = cart.length ? cart.map((c, i) => `
+    <div class="bg-coal/60 border border-white/10 rounded-2xl p-3 flex gap-3">
+      <img src="${c.img}" class="w-[68px] h-[68px] rounded-xl object-cover shrink-0" alt="${c.name}">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-start justify-between gap-2">
+          <strong class="text-[13.5px] leading-tight">${c.name}</strong>
+          <button onclick="rmItem(${i})" class="text-white/30 hover:text-braza transition" aria-label="Remover">
+            <i class="fa-solid fa-trash-can text-[13px]"></i>
+          </button>
+        </div>
+        <div class="text-[11.5px] text-white/45 truncate mt-0.5">${c.ponto || ''}${c.extras && c.extras.length ? ' • +' + c.extras.join(', ') : ''}</div>
+        <div class="flex items-center justify-between mt-2">
+          <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-1 py-0.5">
+            <button onclick="chQty(${i},-1)" class="w-7 h-7 font-extrabold hover:text-braza" aria-label="Menos">−</button>
+            <span class="font-extrabold text-sm w-4 text-center">${c.qty}</span>
+            <button onclick="chQty(${i},1)" class="w-7 h-7 font-extrabold hover:text-cheddar" aria-label="Mais">+</button>
+          </div>
+          <div class="font-display text-lg">${BRL(c.price * c.qty)}</div>
+        </div>
+      </div>
+    </div>`).join('') : `
+    <div class="text-center py-14">
+      <div class="text-6xl mb-4">🍔</div>
+      <p class="font-display text-2xl uppercase">Sacola vazia,<br><span class="text-white/40">coração vazio.</span></p>
+      <p class="text-sm text-white/45 mt-2">Bora resolver isso agora?</p>
+      <button onclick="toggleCart(false);scrollToMenu()" class="btn-fire mt-5 px-6 py-3 rounded-xl font-extrabold text-sm">Ver cardápio</button>
+    </div>`;
+}
+
+function toggleCart(open){
+  const d = $('cartDrawer'), o = $('cartOverlay');
+  if (open) {
+    d.classList.remove('translate-x-full');
+    o.classList.remove('opacity-0','pointer-events-none');
+    document.body.classList.add('modal-open');
+  } else {
+    d.classList.add('translate-x-full');
+    o.classList.add('opacity-0','pointer-events-none');
+    document.body.classList.remove('modal-open');
+  }
+}
+
+function applyCoupon(){ applyCouponCode($('couponInput').value); }
+function applyCouponCode(v){
+  v = (v || '').trim().toUpperCase();
+  if (COUPONS[v]) {
+    coupon = COUPONS[v];
+    updateCart();
+    toast(`Cupom <strong>${v}</strong> aplicado! 🎉`, coupon.label);
+  } else if (v) {
+    toast('Cupom não encontrado 😕', 'Tente BRAZA10 ou FRETEZERO');
+  }
+}
+updateCart();
+
+/* ============================================================
+   PRODUCT MODAL
+============================================================ */
+let pm = null, pmQty = 1, pmPonto = 'Ao ponto rosado', pmExtrasPicked = [];
+const EXTRA_OPTS = [
+  { n:'Bacon caramelizado', p:7 },
+  { n:'Cheddar extra em cascata', p:6 },
+  { n:'Cebola crispy', p:4 },
+  { n:'Molho Braza dobrado', p:3.5 },
+  { n:'Picles artesanal', p:3 }
+];
+
+function openProduct(id){
+  const m = MENU.find(x => x.id === id);
+  if (!m) return;
+
+  pm = m; pmQty = 1; pmPonto = 'Ao ponto rosado'; pmExtrasPicked = [];
+
+  $('pmImg').src = m.img;
+  $('pmTag').textContent = m.tag;
+  $('pmName').textContent = m.name;
+  $('pmDesc').textContent = m.desc;
+  $('pmStars').innerHTML = stars(m.rating) + `<span class="text-white/45 text-[12px] font-bold ml-1.5">${m.rating} • ${m.reviews.toLocaleString('pt-BR')} avaliações</span>`;
+
+  $('pmPonto').innerHTML = ['Mal passado','Ao ponto rosado','Bem passado'].map(p => `
+    <button onclick="setPonto(this,'${p}')" class="pontoBtn flex-1 py-2.5 rounded-xl border text-[12px] font-extrabold transition ${p === pmPonto ? 'bg-braza border-braza' : 'border-white/15 text-white/60 hover:border-white/40'}">${p}</button>`).join('');
+
+  renderPmExtras();
+  updPm();
+
+  $('prodModal').classList.remove('hidden');
+  $('prodModal').classList.add('flex');
+  document.body.classList.add('modal-open');
+}
+
+function setPonto(btn, p){
+  pmPonto = p;
+  document.querySelectorAll('.pontoBtn').forEach(b => {
+    b.className = 'pontoBtn flex-1 py-2.5 rounded-xl border text-[12px] font-extrabold transition border-white/15 text-white/60 hover:border-white/40';
+  });
+  btn.className = 'pontoBtn flex-1 py-2.5 rounded-xl border text-[12px] font-extrabold transition bg-braza border-braza';
+}
+
+function renderPmExtras(){
+  $('pmExtras').innerHTML = EXTRA_OPTS.map((e, i) => `
+    <label class="flex items-center justify-between bg-coal/60 border border-white/10 rounded-xl px-3.5 py-2.5 text-[13px] font-bold cursor-pointer hover:border-cheddar/50 transition">
+      <span class="flex items-center gap-2.5">
+        <input type="checkbox" onchange="tglExtra(${i}, this.checked)" class="accent-[#FF1E2D] w-4 h-4"> ${e.n}
+      </span>
+      <span class="text-cheddar">+${BRL(e.p)}</span>
+    </label>`).join('');
+}
+
+function tglExtra(i, on){ pmExtrasPicked[i] = on ? EXTRA_OPTS[i] : null; updPm(); }
+function pmQtyChange(d){ pmQty = Math.max(1, Math.min(10, pmQty + d)); updPm(); }
+function pmUnit(){ return pm.price + pmExtrasPicked.filter(Boolean).reduce((s, e) => s + e.p, 0); }
+function updPm(){ $('pmQty').textContent = pmQty; $('pmPrice').textContent = BRL(pmUnit() * pmQty); }
+
+function confirmProduct(){
+  addItem({
+    id: pm.id,
+    name: pm.name,
+    desc: pm.desc,
+    price: pmUnit(),
+    img: pm.img,
+    qty: pmQty,
+    ponto: pmPonto,
+    extras: pmExtrasPicked.filter(Boolean).map(e => e.n)
+  });
+  closeProduct();
+  toggleCart(true);
+}
+
+function closeProduct(){
+  $('prodModal').classList.add('hidden');
+  $('prodModal').classList.remove('flex');
+  document.body.classList.remove('modal-open');
+}
+
+/* ============================================================
+   CHECKOUT
+============================================================ */
+let payMethod = 'Pix';
+document.querySelectorAll('.payBtn').forEach(b => {
+  b.onclick = () => {
+    payMethod = b.dataset.pay;
+    document.querySelectorAll('.payBtn').forEach(x => x.classList.remove('!bg-cheddar','!text-black','!border-cheddar'));
+    b.classList.add('!bg-cheddar','!text-black','!border-cheddar');
+  };
+});
+document.querySelector('.payBtn').classList.add('!bg-cheddar','!text-black','!border-cheddar');
+
+function openCheckout(){
+  if (!cart.length) {
+    toast('Sua sacola tá vazia 🍔', 'Adicione um burger antes de finalizar');
+    return;
+  }
+  toggleCart(false);
+  const t = totals();
+
+  $('checkSummary').innerHTML =
+    `<div class="font-extrabold text-[11px] uppercase tracking-widest text-white/45 mb-2">Resumo do pedido</div>` +
+    cart.map(c => `<div class="flex justify-between py-1"><span>${c.qty}x ${c.name}</span><strong>${BRL(c.price * c.qty)}</strong></div>`).join('') +
+    `<div class="dashed-line my-2 opacity-30"></div>
+     <div class="flex justify-between text-white/60"><span>Entrega</span><span>${t.ship === 0 ? 'GRÁTIS' : BRL(t.ship)}</span></div>
+     <div class="flex justify-between font-display text-xl mt-1"><span>TOTAL</span><span class="text-cheddar">${BRL(t.total)}</span></div>`;
+
+  $('checkForm').classList.remove('hidden');
+  $('checkSuccess').classList.add('hidden');
+  $('checkModal').classList.remove('hidden');
+  $('checkModal').classList.add('flex');
+  document.body.classList.add('modal-open');
+}
+
+function closeCheckout(){
+  $('checkModal').classList.add('hidden');
+  $('checkModal').classList.remove('flex');
+  document.body.classList.remove('modal-open');
+}
+
+function finishOrder(){
+  const name = $('fName').value.trim();
+  const st = $('fStreet').value.trim();
+  const nb = $('fNeigh').value.trim();
+
+  if (!name || !st || !nb) {
+    toast('Faltou um detalhe ✍️', 'Preencha nome, rua e bairro');
+    [['fName', name], ['fStreet', st], ['fNeigh', nb]].forEach(([id, val]) => {
+      if (!val) $(id).style.borderColor = '#FF1E2D';
+    });
+    return;
+  }
+
+  const t = totals();
+  const num = 'BZ' + Math.floor(1000 + Math.random() * 9000);
+  let msg = `🔥 *NOVO PEDIDO BRAZA — ${num}*%0A%0A`;
+
+  cart.forEach(c => {
+    msg += `• ${c.qty}x ${c.name} — ${BRL(c.price * c.qty)}%0A`;
+    if (c.ponto) msg += ` _${c.ponto}${c.extras && c.extras.length ? ' + ' + c.extras.join(', ') : ''}_%0A`;
+  });
+
+  msg += `%0A_Subtotal: ${BRL(t.sub)}_%0A`;
+  if (coupon) msg += `_Cupom ${coupon.label}_%0A`;
+  msg += `_Entrega: ${t.ship === 0 ? 'GRÁTIS' : BRL(t.ship)}_%0A`;
+  msg += `*TOTAL: ${BRL(t.total)}*%0A%0A`;
+  msg += `👤 ${encodeURIComponent(name)}%0A`;
+  msg += `📍 ${encodeURIComponent(st + ($('fComp').value ? ', ' + $('fComp').value : ''))} — ${encodeURIComponent(nb)}%0A`;
+  msg += `💳 Pagamento: ${payMethod}%0A`;
+  msg += `📝 Obs: ${encodeURIComponent($('fObs').value || '—')}`;
+
+  window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+
+  $('orderNum').textContent = 'PEDIDO ' + num;
+  $('checkForm').classList.add('hidden');
+  $('checkSuccess').classList.remove('hidden');
+
+  cart = [];
+  coupon = null;
+  $('couponInput').value = '';
+  updateCart();
+}
+
+/* ============================================================
+   REVIEWS
+============================================================ */
+let rIdx = 0, revScore = 5;
+
+function reviewCard(r){
+  return `
+  <div class="w-full sm:w-1/2 lg:w-1/3 shrink-0 px-2">
+    <div class="h-full bg-card border border-white/10 rounded-3xl p-6 flex flex-col hover:border-cheddar/40 transition">
+      <div class="flex gap-0.5 text-sm mb-3">${stars(r.s)}</div>
+      <p class="text-[14px] text-white/75 leading-relaxed flex-1">“${r.t}”</p>
+      <div class="flex items-center gap-3 mt-5 pt-5 border-t border-white/10">
+        <img src="${r.img}" class="w-11 h-11 rounded-full object-cover border border-white/15" alt="${r.n}">
+        <div class="text-[13px]">
+          <strong>${r.n}</strong><br>
+          <span class="text-white/40 text-[12px]">${r.d} • <span class="text-green-400 font-bold">✓ Pedido verificado</span></span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function perView(){ return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1; }
+
+function renderReviews(){
+  $('reviewTrack').innerHTML = REVIEWS.map(reviewCard).join('');
+  applyReviewPos();
+}
+
+function renderDots(){
+  const pages = Math.max(1, REVIEWS.length - perView() + 1);
+  $('reviewDots').innerHTML = Array.from({ length: pages }, (_, i) => `
+    <button onclick="goReview(${i})" class="h-2 rounded-full transition-all ${i === rIdx ? 'w-8 bg-cheddar' : 'w-2 bg-white/20'}" aria-label="Ir para avaliação ${i+1}"></button>`).join('');
+}
+
+function applyReviewPos(){
+  const pv = perView();
+  const max = Math.max(0, REVIEWS.length - pv);
+  rIdx = Math.max(0, Math.min(rIdx, max));
+  $('reviewTrack').style.transform = `translateX(-${rIdx * (100 / pv)}%)`;
+  renderDots();
+}
+
+function moveReview(d){
+  const max = Math.max(0, REVIEWS.length - perView());
+  rIdx += d;
+  if (rIdx > max) rIdx = 0;
+  if (rIdx < 0) rIdx = max;
+  applyReviewPos();
+}
+function goReview(i){ rIdx = i; applyReviewPos(); }
+
+setInterval(() => { if (!document.hidden) moveReview(1); }, 5200);
+window.addEventListener('resize', applyReviewPos);
+
+function renderRevStars(){
+  $('revStars').innerHTML = [1,2,3,4,5].map(i => `
+    <i onclick="revScore=${i};renderRevStars()" class="fa-solid fa-star cursor-pointer transition hover:scale-125 ${i <= revScore ? 'star' : 'text-white/15'}"></i>`).join('');
+}
+renderRevStars();
+
+function submitReview(){
+  const n = $('revName').value.trim() || 'Cliente Braza';
+  const t = $('revText').value.trim();
+  if (!t) {
+    toast('Conta pra gente 😋', 'Escreva sua avaliação rapidinho');
+    return;
+  }
+  REVIEWS.unshift({
+    n: n + ' — São Paulo',
+    s: revScore,
+    t,
+    img: `https://i.pravatar.cc/100?u=${Date.now()}`,
+    d: 'agora mesmo • Site'
+  });
+  $('revName').value = '';
+  $('revText').value = '';
+  rIdx = 0;
+  renderReviews();
+  toast('Avaliação publicada! ❤️', 'Valeu! Você ganhou selo de crítico Braza.');
+  document.querySelector('#avaliacoes').scrollIntoView({ behavior:'smooth' });
+}
+renderReviews();
+
+/* ============================================================
+   HOURS / DELIVERY / MISC
+============================================================ */
+function checkHours(){
+  const now = new Date();
+  const d = now.getDay();
+  const h = now.getHours() + now.getMinutes() / 60;
+  const open = (d !== 1) && h >= 18 && h < 23;
+
+  const pill = $('statusPill');
+  const badge = $('openBadgeText');
+
+  if (open) {
+    pill.className = 'text-[11px] font-extrabold px-2.5 py-1 rounded-full bg-green-500/15 text-green-400 border border-green-500/30';
+    pill.textContent = '● ABERTO AGORA';
+    badge.textContent = 'Aberto agora • até 23h';
+  } else {
+    pill.className = 'text-[11px] font-extrabold px-2.5 py-1 rounded-full bg-braza/15 text-braza border border-braza/30';
+    pill.textContent = '● FECHADO NO MOMENTO';
+    badge.textContent = d === 1 ? 'Fechado hoje • abrimos ter 18h' : 'Abre hoje às 18h';
+  }
+
+  const pct = Math.min(100, Math.max(0, ((h - 18) / 5) * 100));
+  $('hoursBar').style.width = (open ? pct : 0) + '%';
+}
+checkHours();
+setInterval(checkHours, 60000);
+
+function calcDelivery(){
+  const cep = $('cepInput').value.replace(/\D/g, '');
+  const box = $('cepResult');
+  box.classList.remove('hidden');
+
+  if (cep.length < 8) {
+    box.className = 'mt-3 text-sm bg-braza/10 border border-braza/30 rounded-xl px-4 py-3 text-white/80';
+    box.innerHTML = '⚠️ Digite um CEP válido com 8 números.';
+    return;
+  }
+  const mins = 20 + (parseInt(cep.slice(-2)) % 20);
+  const fee = cep.startsWith('05') ? 5.90 : 7.90;
+
+  box.className = 'mt-3 text-sm bg-green-500/10 border border-green-500/30 rounded-xl px-4 py-3 text-white/85';
+  box.innerHTML = `✅ <strong>Entregamos no seu CEP!</strong> ${mins}–${mins + 10} min • Taxa <strong>${BRL(fee)}</strong> ${fee < 6 ? '(grátis acima de R$60 🎉)' : ''}`;
+}
+
+function sendQuick(){
+  const m = $('quickMsg').value.trim() || 'Olá! Quero fazer um pedido!';
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(m)}`, '_blank');
+}
+
+function subscribe(){
+  const v = $('newsInput').value.trim();
+  if (!v || !v.includes('@')) {
+    toast('E-mail inválido 📧', 'Digite um e-mail válido pra ganhar 15% OFF');
+    return;
+  }
+  $('newsMsg').classList.remove('hidden');
+  $('newsMsg').textContent = '🎉 Boa! Cupom BEMVINDO15 liberado. Use no carrinho!';
+  coupon = COUPONS.BEMVINDO15;
+  updateCart();
+  toast('Bem-vindo ao Clube Braza! 🔥', 'Cupom BEMVINDO15 aplicado no carrinho');
+}
+
+function toast(title, sub){
+  const el = document.createElement('div');
+  el.className = 'toast-in w-full sm:w-[340px] bg-[#1A1A1E]/95 backdrop-blur border border-white/10 border-l-4 border-l-cheddar rounded-2xl px-4 py-3.5 shadow-card flex gap-3 items-start';
+  el.innerHTML = `
+    <div class="w-9 h-9 shrink-0 rounded-xl bg-gradient-to-br from-braza to-ember flex items-center justify-center">🔥</div>
+    <div class="text-[13px] leading-snug">
+      <div class="font-extrabold">${title}</div>
+      <div class="text-white/55 font-semibold mt-0.5">${sub || ''}</div>
+    </div>`;
+  $('toasts').appendChild(el);
+  setTimeout(() => {
+    el.style.transition = '.4s';
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(10px)';
+    setTimeout(() => el.remove(), 400);
+  }, 3400);
+}
+
+/* ============================================================
+   REVEAL + COUNTERS
+============================================================ */
+function runCounters(scope){
+  if (!scope.querySelectorAll) return;
+  scope.querySelectorAll('.counter').forEach(c => {
+    if (c.dataset.done) return;
+    c.dataset.done = 1;
+    const t = +c.dataset.target;
+    let v = 0;
+    const st = setInterval(() => {
+      v += Math.ceil(t / 40);
+      if (v >= t) { v = t; clearInterval(st); }
+      c.textContent = v;
+    }, 40);
+  });
+}
+
+function revealInit(){
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.transition = 'all .8s cubic-bezier(.2,.8,.2,1)';
+        e.target.style.opacity = 1;
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+        runCounters(e.target);
+      }
+    });
+  }, { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+/* fallback: garante visibilidade se o preloader for pulado */
+setTimeout(() => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    if (getComputedStyle(el).opacity === '0') {
+      el.style.transition = 'all .8s cubic-bezier(.2,.8,.2,1)';
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    }
+  });
+}, 3000);
+
+/* counters standalone */
+document.querySelectorAll('.counter').forEach(c => {
+  const o = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        if (c.dataset.done) return;
+        c.dataset.done = 1;
+        const t = +c.dataset.target;
+        let v = 0;
+        const st = setInterval(() => {
+          v += Math.ceil(t / 45);
+          if (v >= t) { v = t; clearInterval(st); }
+          c.textContent = v;
+        }, 45);
+        o.disconnect();
+      }
+    });
+  });
+  o.observe(c);
+});
+
+/* ============================================================
+   GLOBAL EVENTS
+============================================================ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeProduct(); closeCheckout(); toggleCart(false); }
+});
+
+$('cepInput').addEventListener('input', e => {
+  let v = e.target.value.replace(/\D/g, '').slice(0, 8);
+  if (v.length > 5) v = v.slice(0, 5) + '-' + v.slice(5);
+  e.target.value = v;
+});
+
+/* subtle GSAP intro if available */
+window.addEventListener('load', () => {
+  if (window.gsap) {
+    gsap.from('#navBox', { y:-30, opacity:0, duration:.9, ease:'power3.out', delay:.2 });
+  }
+});
+</script>
+</body>
+</html>
